@@ -1,0 +1,13 @@
+{
+  "packages": [
+    "packages/@streamjar/*"
+  ],
+  "command": {
+    "publish": {
+      "npmClient": "npm",
+      "verifyAccess": false
+    }
+  },
+  "registry": "https://npm.sjsrv.uk",
+  "version": "0.0.0"
+}

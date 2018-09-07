@@ -1,0 +1,14 @@
+{
+    "extends": "../../../tsconfig.json",
+    "angularCompilerOptions": {
+        "strictMetadataEmit": true,
+        "skipTemplateCodegen": true,
+        "fullTemplateTypeCheck": true
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "compilerOptions": {
+        "outDir": "./dist"
+    }
+}

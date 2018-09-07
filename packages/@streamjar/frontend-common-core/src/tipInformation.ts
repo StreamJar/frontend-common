@@ -1,0 +1,25 @@
+// tslint:disable object-literal-sort-keys
+
+export const currencyDropdown: { name: string, value: string }[] = [
+	{ name: 'USD', value: 'USD ($)' },
+	{ name: 'GBP', value: 'GBP (£)' },
+	{ name: 'EUR', value: 'EUR (€)' },
+	{ name: 'CAD', value: 'CAD ($)' },
+	{ name: 'AUD', value: 'AUD ($)' },
+	{ name: 'BRL', value: 'BRL (R$)' },
+	{ name: 'CZK', value: 'CZK (Kč)' },
+	{ name: 'DKK', value: 'DKK (kr.)' },
+	{ name: 'HKD', value: 'HKD (HK$)' },
+	{ name: 'TWD', value: 'TWD (NT$)' },
+	{ name: 'THB', value: 'THB (฿)' },
+	{ name: 'ILS', value: 'ILS (₪)' },
+	{ name: 'MYR', value: 'MYR (RM)' },
+	{ name: 'MXN', value: 'MXN ($)' },
+	{ name: 'NOK', value: 'NOK (kr)' },
+	{ name: 'NZD', value: 'NZD ($)' },
+	{ name: 'PHP', value: 'PHP (₱)' },
+	{ name: 'RUB', value: 'RUB (₽)' },
+	{ name: 'SGD', value: 'SGD ($)' },
+	{ name: 'SEK', value: 'SEK (kr)' },
+	{ name: 'CHF', value: 'CHF (CHF)' },
+];
