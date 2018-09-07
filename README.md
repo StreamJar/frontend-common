@@ -1,6 +1,8 @@
 # @streamjar/frontend-common
 frontend-common is a shared library shared between our frontends ([frontend2](https://control.streamjar.tv), [usersite2](https://luke.streamjar.gg), [developers](https://developers.streamjar.io)) which aids in execution of HTTP requests and any other shared logic.
 
+For simplicity, this is a new repository. You can find the archived frontend-common (and frontend1 version) [here](https://github.com/StreamJar/blipjar-frontend-common)
+
 ## [@streamjar/frontend-common-core](https://github.com/StreamJar/frontend-common/tree/master/packages/%40streamjar/frontend-common-core)
 The core holds all of the logic which gets shared between platforms. Roughly speaking it contains:
 
