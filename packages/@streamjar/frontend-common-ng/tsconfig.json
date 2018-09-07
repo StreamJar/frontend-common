@@ -10,11 +10,12 @@
     ],
     "compilerOptions": {
         "declaration": true,
-        "declarationDir": "dist",
+        "declarationDir": "./dist",
         "baseUrl": ".",
         "outDir": "./dist"
     },
     "exclude:": [
-        "./dist"
+        "./dist",
+        "node_modules/"
     ]
 }
