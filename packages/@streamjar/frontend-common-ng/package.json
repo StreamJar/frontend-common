@@ -1,6 +1,6 @@
 {
   "name": "@streamjar/frontend-common-ng",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Frontend common for StreamJar",
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
   "author": "Luke Thompson <luke@streamjar.tv>",
   "dependencies": {
     "@angular/core": "^6.1.7",
-    "@streamjar/frontend-common-core": "^1.0.1"
+    "@streamjar/frontend-common-core": "^1.0.2"
   },
   "scripts": {
     "build": "ngc",
