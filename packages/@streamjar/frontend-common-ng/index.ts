@@ -73,6 +73,6 @@ export function ViewerAccountFactory(dep: HttpService) { return new Models.Viewe
         { provide: Models.ViewerAccount, useFactory: ViewerAccountFactory, deps: [HttpService] },
     ]
 })
-export class FrontendModels {
+export class FrontendCommonModule {
 
 }
