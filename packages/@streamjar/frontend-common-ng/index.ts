@@ -3,6 +3,7 @@ import * as Models from '@streamjar/frontend-common-core/models';
 import { HttpService } from '@streamjar/frontend-common-core';
 
 export function AccountFactory(dep: HttpService) { return new Models.Account(dep); }
+export function ApiDocsFactory(dep: HttpService) { return new Models.ApiDocs(dep); }
 export function ChannelFactory(dep: HttpService) { return new Models.Channel(dep); }
 export function StatisticsFactory(dep: HttpService) { return new Models.Statistics(dep); }
 export function FollowerFactory(dep: HttpService) { return new Models.Follower(dep); }
@@ -39,6 +40,7 @@ export function ViewerAccountFactory(dep: HttpService) { return new Models.Viewe
 @NgModule({
     providers: [
         { provide: Models.Account, useFactory: AccountFactory, deps: [HttpService] },
+        { provide: Models.ApiDocs, useFactory: ApiDocsFactory, deps: [HttpService] },
         { provide: Models.Channel, useFactory: ChannelFactory, deps: [HttpService] },
         { provide: Models.Statistics, useFactory: StatisticsFactory, deps: [HttpService] },
         { provide: Models.Follower, useFactory: FollowerFactory, deps: [HttpService] },

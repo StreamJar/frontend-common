@@ -1,4 +1,5 @@
 import { Account } from './account.model';
+import { ApiDocs } from './api-docs.model';
 import { Authorization } from './authorization.model';
 import { Boost } from './boost.model';
 import { Channel } from './channel.model';
@@ -69,9 +70,12 @@ export { Giveaway, IGiveawayWin } from './giveaway.model';
 export {
 	IPanel, PanelSetting, PanelType, IPanelTips, IPanelAudioRecording, IPanelInput, IPanelText, Panel,
 } from './panel.model';
+export { ApiDocs, IDocumentationCategory, IDocumentationEndpoint, IDocumentationGroup, IDocumentationParam } from './api-docs.model';
+
 
 export const MODULES = [
 	Account,
+	ApiDocs,
 	Channel,
 	Statistics,
 	Follower,
