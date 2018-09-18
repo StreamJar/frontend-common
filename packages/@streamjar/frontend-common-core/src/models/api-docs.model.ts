@@ -68,22 +68,22 @@ export class ApiDocs {
 
 	private getEndpoint(baseUrl: string, i, url: string): IDocumentationEndpoint {
 		const description: string = this.getElement(i.content, 'copy').content
-		const scope = description.match(new RegExp(/\*Required authentication scope:\* `([a-zA-Z0-0:]+)`/));
+		const scope = description.match(new RegExp(/\*Required authentication scope:\* `([a-zA-Z0-0:\(\)]+)`/));
 
-		return {
-			bodyParams: this.getParams(i.attributes.data.content[0].content),
-			description: description.replace(new RegExp(/\n\n\*Required authentication scope:\* `([a-zA-Z0-0:]+)`/), ''),
-			name: i.meta.title,
-			scope: scope ? scope[1] : null,
-			url: [
-				{ value: baseUrl, type: 'string' },
-				...url.split(/({.*?})/).filter(a => !!a).map(a => ({
-					type: new RegExp(/({.*?})/).test(a) ? 'variable' : 'string',
-					value: a,
-				})).filter(a => !!a.value),
-			],
-			urlParams: this.getParams(i.attributes.hrefVariables.content),
-		};
+        return {
+            bodyParams: this.getParams(i.attributes && i.attributes.data ? i.attributes.data.content[0].content : []),
+            description: description.replace(new RegExp(/\n\n\*Required authentication scope:\* `([a-zA-Z0-0:\(\)]+)`/), ''),
+            name: i.meta.title,
+            scope: scope ? scope[1] : null,
+            url: [
+                { value: baseUrl, type: 'string' },
+                ...url.split(/({.*?})/).filter(a => !!a).map(a => ({
+                    type: new RegExp(/({.*?})/).test(a) ? 'variable' : 'string',
+                    value: a,
+                })).filter(a => !!a.value),
+            ],
+            urlParams: this.getParams(i.attribute && i.attributes.hrefVariables ? i.attributes.hrefVariables.content : []),
+        };
 	}
 
 	private getElement(arr, val) {
