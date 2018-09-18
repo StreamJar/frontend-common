@@ -72,6 +72,7 @@ export {
 } from './panel.model';
 export { ApiDocs, IDocumentationCategory, IDocumentationEndpoint, IDocumentationGroup, IDocumentationParam } from './api-docs.model';
 
+export { BaseModel } from './base';
 
 export const MODULES = [
 	Account,
