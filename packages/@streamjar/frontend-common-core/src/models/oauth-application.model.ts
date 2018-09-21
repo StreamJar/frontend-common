@@ -14,7 +14,7 @@ export interface IOAuthApplication extends Dated, Identifiable {
 }
 
 export class OAuthApplication {
-	private fillable = ['website', 'redirect', 'name'];
+	private writable = ['website', 'redirect', 'name'];
 
 	constructor(private jar: HttpService) {}
 
@@ -27,11 +27,11 @@ export class OAuthApplication {
 	}
 
 	public create(data: any): Observable<IOAuthApplication> {
-		return this.jar.post<IOAuthApplication>(`oauth/applications`, { ...pick(data, this.fillable), secret: !!data.secret });
+		return this.jar.post<IOAuthApplication>(`oauth/applications`, { ...pick(data, this.writable), secret: !!data.secret });
 	}
 
 	public update(application: IOAuthApplication, data: any): Observable<IOAuthApplication> {
-		return this.jar.patch<IOAuthApplication>(`oauth/applications/${application.client}`, data);
+		return this.jar.patch<IOAuthApplication>(`oauth/applications/${application.client}`, pick(data, this.writable));
 	}
 
 	public delete(application: IOAuthApplication): Observable<void> {

@@ -70,7 +70,8 @@ export { Giveaway, IGiveawayWin } from './giveaway.model';
 export {
 	IPanel, PanelSetting, PanelType, IPanelTips, IPanelAudioRecording, IPanelInput, IPanelText, Panel,
 } from './panel.model';
-export { ApiDocs, IDocumentationCategory, IDocumentationEndpoint, IDocumentationGroup, IDocumentationParam } from './api-docs.model';
+export { ApiDocs, IDocumentationCategory, IDocumentationEndpoint, IDocumentationGroup, IDocumentationParam,
+	IDocumentationResponse } from './api-docs.model';
 
 export { BaseModel } from './base';
 
