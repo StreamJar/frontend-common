@@ -12,6 +12,7 @@
         "declaration": true,
         "declarationDir": "./dist",
         "baseUrl": ".",
+        "rootDir": ".",
         "outDir": "./dist"
     },
     "exclude:": [
