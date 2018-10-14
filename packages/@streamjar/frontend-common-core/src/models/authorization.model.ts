@@ -31,4 +31,8 @@ export class Authorization extends BaseModel<IAuthorization> implements Manipula
 		return this.jar
 			.post<{ code?: string; access_token?: string; expires_in: number }>(`channels/${channelId}/authorizations/${clientId}`, data);
 	}
+
+	public useShortcode(channelId: number, code: string, accept: boolean): Observable<void> {
+		return this.jar.post<void>(`channels/${channelId}/authorizations/shortcode/${code}`, { accept })
+	}
 }
