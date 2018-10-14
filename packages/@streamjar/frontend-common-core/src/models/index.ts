@@ -13,6 +13,7 @@ import { Integration } from './integration.model';
 import { Invite } from './invite.model';
 import { Message } from './message.model';
 import { OAuthApplication } from './oauth-application.model';
+import { OAuthShortcode } from './oauth-shortcode.model';
 import { Panel } from './panel.model';
 import { Permission } from './permission.model';
 import { Platform } from './platform.model';
@@ -72,6 +73,7 @@ export {
 } from './panel.model';
 export { ApiDocs, IDocumentationCategory, IDocumentationEndpoint, IDocumentationGroup, IDocumentationParam,
 	IDocumentationResponse } from './api-docs.model';
+export { OAuthShortcode, IShortcode, IShortcodeState, IShortcodeInfo } from './oauth-shortcode.model';
 
 export { BaseModel } from './base';
 
@@ -100,6 +102,7 @@ export const MODULES = [
 	Panel,
 	Points,
 	OAuthApplication,
+	OAuthShortcode,
 	Tip,
 	Authorization,
 	Platform,

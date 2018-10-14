@@ -26,6 +26,7 @@ export function WarningFactory(dep: HttpService) { return new Models.Warning(dep
 export function PanelFactory(dep: HttpService) { return new Models.Panel(dep); }
 export function PointsFactory(dep: HttpService) { return new Models.Points(dep); }
 export function OAuthApplicationFactory(dep: HttpService) { return new Models.OAuthApplication(dep); }
+export function OAuthShortcodeFactory(dep: HttpService) { return new Models.OAuthShortcode(dep); }
 export function TipFactory(dep: HttpService) { return new Models.Tip(dep); }
 export function AuthorizationFactory(dep: HttpService) { return new Models.Authorization(dep); }
 export function PlatformFactory(dep: HttpService) { return new Models.Platform(dep); }
@@ -63,6 +64,7 @@ export function ViewerAccountFactory(dep: HttpService) { return new Models.Viewe
         { provide: Models.Panel, useFactory: PanelFactory, deps: [HttpService] },
         { provide: Models.Points, useFactory: PointsFactory, deps: [HttpService] },
         { provide: Models.OAuthApplication, useFactory: OAuthApplicationFactory, deps: [HttpService] },
+        { provide: Models.OAuthShortcode, useFactory: OAuthShortcodeFactory, deps: [HttpService] },
         { provide: Models.Tip, useFactory: TipFactory, deps: [HttpService] },
         { provide: Models.Authorization, useFactory: AuthorizationFactory, deps: [HttpService] },
         { provide: Models.Platform, useFactory: PlatformFactory, deps: [HttpService] },
