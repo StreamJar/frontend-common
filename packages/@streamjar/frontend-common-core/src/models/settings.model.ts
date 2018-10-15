@@ -1,8 +1,8 @@
-import omit from 'lodash-es/omit';
 import { Observable } from 'rxjs';
 
 import { IChannel } from '../models';
 import { HttpService } from '../services/http.service';
+import { omit } from '../utils';
 import { IExtralife } from './settings.model';
 
 export interface IExtralife {

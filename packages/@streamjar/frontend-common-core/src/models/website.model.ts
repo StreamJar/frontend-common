@@ -1,7 +1,7 @@
-import pick from 'lodash-es/pick';
 import { Observable } from 'rxjs';
 
 import { HttpService } from '../services/http.service';
+import { pick } from '../utils';
 import { IChannel } from './channel.model';
 
 export interface IWebsite {

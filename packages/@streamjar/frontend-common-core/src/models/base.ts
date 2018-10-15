@@ -1,9 +1,9 @@
-import pick from 'lodash-es/pick';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { IChannel } from '../models';
 import { HttpService } from '../services/http.service';
+import { pick } from '../utils';
 
 export type platform = 'mixer' | 'twitch' | 'smashcast' | 'youtube' | 'gamewisp';
 
