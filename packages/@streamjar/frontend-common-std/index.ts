@@ -16,6 +16,14 @@ export class InvalidResponseError extends Error {
 export class JarService extends HttpService {
 	private getHeadersFn: (url: string) =>  { [key: string]: string };
 
+	constructor(config: { version: string, endpoint: string}, headersFn?: (url: string) =>  { [key: string]: string }) {
+		super(config);
+
+		if (headersFn) {
+			this.getHeadersFn = headersFn;
+		}
+	}
+
 	public get<T>(uri: string): Observable<T> {
 		return this.request<T>('GET', uri);
 	}
