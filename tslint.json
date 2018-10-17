@@ -133,7 +133,6 @@
       "only-arrow-functions": [true],
       "arrow-return-shorthand": true,
       "no-namespace": true,
-      "no-magic-numbers": [true, 1, 2, 0.5, 0, -1, 100],
       "curly": true,
       "no-invalid-template-strings": true,
       "linebreak-style": [true, "LF"],
