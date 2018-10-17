@@ -1,23 +1,20 @@
 {
-  "name": "@streamjar/frontend-common-core",
+  "name": "@streamjar/frontend-common-std",
   "version": "1.0.12",
-  "description": "Frontend common for StreamJar",
+  "description": "Standard http adapter for StreamJar",
   "repository": {
     "type": "git",
     "url": "git@github.com:StreamJar/frontend-common.git"
   },
-  "main": "dist/src/index.js",
-  "typings": "dist/src/index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "author": "Luke Thompson <luke@streamjar.tv>",
   "dependencies": {
-    "@types/js-cookie": "^2.2.0",
-    "js-cookie": "^2.2.0"
-  },
-  "peerDependencies": {
-    "rxjs": "^6.2.1"
+    "@streamjar/frontend-common-core": "^1.0.12",
+    "rxjs": "^6.3.3"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "rimraf dist/ && tsc -p ./tsconfig.json",
     "lint": "tslint --project ."
   },
   "publishConfig": {
