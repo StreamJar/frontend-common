@@ -14,9 +14,9 @@ export class InvalidResponseError extends Error {
 }
 
 export class JarService extends HttpService {
-	private getHeadersFn: (url: string) =>  { [key: string]: string };
+	private getHeadersFn: (url: string) =>  Promise<{ [key: string]: string }>;
 
-	constructor(config: { version: string, endpoint: string}, headersFn?: (url: string) =>  { [key: string]: string }) {
+	constructor(config: { version: string, endpoint: string}, headersFn?: (url: string) =>  Promise<{ [key: string]: string }>) {
 		super(config);
 
 		if (headersFn) {
@@ -48,33 +48,34 @@ export class JarService extends HttpService {
 		const obs = new Subject<T>();
 
 		let bodyValue;
-		const headers: { [key: string]: string } = this.getHeadersFn ? this.getHeadersFn(url) : this.getHeaders(url);
 
-		if (body) {
-			bodyValue = JSON.stringify(body);
-			headers['Content-Type'] = 'application/json';
-		}
-
-		fetch(this.buildUrl(url), {
-			body: bodyValue,
-			headers: headers,
-			method: method.toUpperCase(),
-		}).then((value) => {
-			if (!value.ok) {
-				throw new InvalidResponseError(value);
+		(this.getHeadersFn ? this.getHeadersFn(url) : Promise.resolve(this.getHeaders(url))).then(headers => {
+			if (body) {
+				bodyValue = JSON.stringify(body);
+				headers['Content-Type'] = 'application/json';
 			}
 
-			if (value.status === 204) {
-				return null;
-			}
+			return fetch(this.buildUrl(url), {
+				body: bodyValue,
+				headers: headers,
+				method: method.toUpperCase(),
+			}).then((value) => {
+				if (!value.ok) {
+					throw new InvalidResponseError(value);
+				}
 
-			return value.json();
-		}).then(value => {
-			obs.next(value);
-			obs.complete();
-		}).catch((err) => {
-			obs.error(err);
-			obs.complete();
+				if (value.status === 204) {
+					return null;
+				}
+
+				return value.json();
+			}).then(value => {
+				obs.next(value);
+				obs.complete();
+			}).catch((err) => {
+				obs.error(err);
+				obs.complete();
+			});
 		});
 
 		return obs;
