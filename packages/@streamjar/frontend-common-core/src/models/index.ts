@@ -75,7 +75,7 @@ export {
 export { ApiDocs, IDocumentationCategory, IDocumentationEndpoint, IDocumentationGroup, IDocumentationParam,
 	IDocumentationResponse } from './api-docs.model';
 export { OAuthShortcode, IShortcode, IShortcodeState, IShortcodeInfo } from './oauth-shortcode.model';
-export { Internal, IBotStatus, IBotStatusService, IBotStatusBot } from './internal.model';
+export { Internal, IBotStatus, IBotStatusService, IBotStatusBot, IInternalChannel, IInternalService } from './internal.model';
 
 export { BaseModel } from './base';
 
