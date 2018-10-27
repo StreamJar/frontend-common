@@ -5,6 +5,7 @@ import { Dated, Identifiable } from './base';
 
 export interface IBotStatus {
 	service: IBotStatusService;
+	status: string;
 	servers: IBotStatusBot[];
 }
 
