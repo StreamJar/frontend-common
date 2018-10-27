@@ -10,6 +10,7 @@ import { Font } from './font.model';
 import { Giveaway } from './giveaway.model';
 import { Goal } from './goal.model';
 import { Integration } from './integration.model';
+import { Internal } from './internal.model';
 import { Invite } from './invite.model';
 import { Message } from './message.model';
 import { OAuthApplication } from './oauth-application.model';
@@ -74,6 +75,7 @@ export {
 export { ApiDocs, IDocumentationCategory, IDocumentationEndpoint, IDocumentationGroup, IDocumentationParam,
 	IDocumentationResponse } from './api-docs.model';
 export { OAuthShortcode, IShortcode, IShortcodeState, IShortcodeInfo } from './oauth-shortcode.model';
+export { Internal, IBotStatus, IBotStatusService, IBotStatusBot } from './internal.model';
 
 export { BaseModel } from './base';
 
@@ -113,4 +115,5 @@ export const MODULES = [
 	Viewer,
 	Giveaway,
 	ViewerAccount,
+	Internal,
 ];

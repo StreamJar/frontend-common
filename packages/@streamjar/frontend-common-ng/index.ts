@@ -37,6 +37,7 @@ export function FontFactory(dep: HttpService) { return new Models.Font(dep); }
 export function ViewerFactory(dep: HttpService) { return new Models.Viewer(dep); }
 export function GiveawayFactory(dep: HttpService) { return new Models.Giveaway(dep); }
 export function ViewerAccountFactory(dep: HttpService) { return new Models.ViewerAccount(dep); }
+export function InternalFactory(dep: HttpService) { return new Models.Internal(dep); }
 
 @NgModule({
     providers: [
@@ -75,6 +76,7 @@ export function ViewerAccountFactory(dep: HttpService) { return new Models.Viewe
         { provide: Models.Viewer, useFactory: ViewerFactory, deps: [HttpService] },
         { provide: Models.Giveaway, useFactory: GiveawayFactory, deps: [HttpService] },
         { provide: Models.ViewerAccount, useFactory: ViewerAccountFactory, deps: [HttpService] },
+        { provide: Models.Internal, useFactory: InternalFactory, deps: [HttpService] },
     ]
 })
 export class FrontendCommonModule {
