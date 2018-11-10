@@ -97,10 +97,10 @@ export class Integration {
 	*/
 
 	public getTwitter(channel: IChannel): Observable<ITwitter> {
-		return this.jar.get<ITwitter>(`channels/${channel.id}/integrations/tiltify`)
+		return this.jar.get<ITwitter>(`channels/${channel.id}/integrations/twitter`)
 	}
 
 	public setTwitterConfiguration(channel: IChannel, cfg: ITwitterConfiguration): Observable<void> {
-		return this.jar.put<void>(`channels/${channel.id}/integrations/tiltify`, cfg)
+		return this.jar.put<void>(`channels/${channel.id}/integrations/twitter`, cfg)
 	}
 }
