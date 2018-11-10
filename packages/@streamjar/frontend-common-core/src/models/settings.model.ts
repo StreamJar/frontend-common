@@ -2,7 +2,6 @@ import { Observable } from 'rxjs';
 
 import { IChannel } from '../models';
 import { HttpService } from '../services/http.service';
-import { omit } from '../utils';
 import { IExtralife } from './settings.model';
 
 export interface IExtralife {
@@ -11,13 +10,6 @@ export interface IExtralife {
 
 export interface ITiltify {
 	apikey: string;
-}
-
-export interface ITwitter {
-	liveMessage?: string;
-	followerMessage?: string;
-	subscriberMessage?: string;
-	username?: string;
 }
 
 export interface IGreetings {
@@ -69,14 +61,6 @@ export class Settings {
 
 	public updateTiltify(channel: IChannel, data: ITiltify): Observable<ITiltify> {
 		return this.jar.patch<ITiltify>(`channels/${channel.id}/settings/tiltify`, data);
-	}
-
-	public getTwitter(channel: IChannel): Observable<ITwitter> {
-		return this.jar.get<ITwitter>(`channels/${channel.id}/settings/twitter`);
-	}
-
-	public updateTwitter(channel: IChannel, data: ITwitter): Observable<ITwitter> {
-		return this.jar.patch<ITwitter>(`channels/${channel.id}/settings/twitter`, omit(data, 'username'));
 	}
 
 	public getGreetings(channel: IChannel): Observable<IGreetings> {

@@ -29,7 +29,6 @@ import { Subscriber } from './subscriber.model';
 import { TimedMessage } from './timed-message.model';
 import { Tip } from './tip.model';
 import { Tipper } from './tipper.model';
-import { Twitter } from './twitter.model';
 import { ViewerAccount } from './viewer-account.model';
 import { Viewer } from './viewer.model';
 import { Warning } from './warning.model';
@@ -48,8 +47,7 @@ export { IGoal, Goal, ICreatableGoal } from './goal.model';
 export { IQuote, Quote } from './quote.model';
 export { Command, ICommand } from './command.model';
 export { Message, IMessage } from './message.model';
-export { Settings, IExtralife, ITiltify, ITwitter, IGreetings, ISchedule, ITips, IPayment, ILinks } from './settings.model';
-export { Twitter, ITwitterURLs } from './twitter.model';
+export { Settings, IExtralife, ITiltify, IGreetings, ISchedule, ITips, IPayment, ILinks } from './settings.model';
 export { Website, ILayout, IPage, IWebsite } from './website.model';
 export { Filter, IFilter } from './filter.model';
 export { Rank, IRank } from './rank.model';
@@ -63,7 +61,7 @@ export { Platform, IPlatform } from './platform.model';
 export { Session, ISession } from './session.model';
 export { Tipper, ITipper } from './tipper.model';
 export {
-	ISpotifySong, Integration, IIntegration, IOAuthConfig, ITiltifyCampaign,
+	ISpotifySong, Integration, IIntegration, IOAuthConfig, ITiltifyCampaign, ITwitter, ITwitterConfiguration,
 } from './integration.model';
 export { IGoogleFont, Font } from './font.model';
 export { Viewer, IViewer } from './viewer.model';
@@ -94,7 +92,6 @@ export const MODULES = [
 	Command,
 	Message,
 	Settings,
-	Twitter,
 	Website,
 	Filter,
 	Rank,

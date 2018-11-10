@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { HttpService } from '../services/http.service';
 import { Dated } from './base';
 import { IChannel } from './channel.model';
-import { ITiltifyCampaign } from './integration.model';
 
 export interface IIntegration extends Dated {
 	id: number;
@@ -38,6 +37,16 @@ export interface ISpotifySong {
 	artist?: string;
 	name?: string;
 	artwork?: string;
+}
+
+export interface ITwitterConfiguration {
+	liveMessage: string;
+	followerMessage: string;
+	subscriberMessage: string;
+}
+
+export interface ITwitter extends IIntegration {
+	settings: ITwitterConfiguration;
 }
 
 export class Integration {
@@ -81,5 +90,17 @@ export class Integration {
 
 	public pingSpotify(channel: IChannel): Observable<ISpotifySong> {
 		return this.jar.get<ISpotifySong>(`channels/${channel.id}/integrations/spotify/ping`);
+	}
+
+	/*
+	* Twitter Config
+	*/
+
+	public getTwitter(channel: IChannel): Observable<ITwitter> {
+		return this.jar.get<ITwitter>(`channels/${channel.id}/integrations/tiltify`)
+	}
+
+	public setTiltifyConfig(channel: IChannel, cfg: ITwitterConfiguration): Observable<void> {
+		return this.jar.put<void>(`channels/${channel.id}/integrations/tiltify`, cfg)
 	}
 }

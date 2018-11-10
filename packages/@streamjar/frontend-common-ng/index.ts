@@ -16,7 +16,6 @@ export function QuoteFactory(dep: HttpService) { return new Models.Quote(dep); }
 export function CommandFactory(dep: HttpService) { return new Models.Command(dep); }
 export function MessageFactory(dep: HttpService) { return new Models.Message(dep); }
 export function SettingsFactory(dep: HttpService) { return new Models.Settings(dep); }
-export function TwitterFactory(dep: HttpService) { return new Models.Twitter(dep); }
 export function WebsiteFactory(dep: HttpService) { return new Models.Website(dep); }
 export function FilterFactory(dep: HttpService) { return new Models.Filter(dep); }
 export function RankFactory(dep: HttpService) { return new Models.Rank(dep); }
@@ -55,7 +54,6 @@ export function InternalFactory(dep: HttpService) { return new Models.Internal(d
         { provide: Models.Command, useFactory: CommandFactory, deps: [HttpService] },
         { provide: Models.Message, useFactory: MessageFactory, deps: [HttpService] },
         { provide: Models.Settings, useFactory: SettingsFactory, deps: [HttpService] },
-        { provide: Models.Twitter, useFactory: TwitterFactory, deps: [HttpService] },
         { provide: Models.Website, useFactory: WebsiteFactory, deps: [HttpService] },
         { provide: Models.Filter, useFactory: FilterFactory, deps: [HttpService] },
         { provide: Models.Rank, useFactory: RankFactory, deps: [HttpService] },
