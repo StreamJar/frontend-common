@@ -62,6 +62,7 @@ export { Session, ISession } from './session.model';
 export { Tipper, ITipper } from './tipper.model';
 export {
 	ISpotifySong, Integration, IIntegration, IOAuthConfig, ITiltifyCampaign, ITwitter, ITwitterConfiguration,
+	IDonorDriveConfiguration, IDonorDrive, IDonorDriveCharity, IDonorDriveParticipant,
 } from './integration.model';
 export { IGoogleFont, Font } from './font.model';
 export { Viewer, IViewer } from './viewer.model';

@@ -49,6 +49,25 @@ export interface ITwitter extends IIntegration {
 	settings: ITwitterConfiguration;
 }
 
+export interface IDonorDriveConfiguration {
+	charityId: string;
+	participantId: number;
+}
+
+export interface IDonorDrive extends IIntegration {
+	settings: IDonorDriveConfiguration;
+}
+
+export interface IDonorDriveCharity {
+	id: string;
+	name: string;
+}
+
+export interface IDonorDriveParticipant {
+	participantId: number;
+	name: string;
+}
+
 export class Integration {
 	constructor(private jar: HttpService) {}
 
@@ -102,5 +121,26 @@ export class Integration {
 
 	public setTwitterConfiguration(channel: IChannel, cfg: ITwitterConfiguration): Observable<void> {
 		return this.jar.put<void>(`channels/${channel.id}/integrations/twitter`, cfg)
+	}
+
+	/*
+	* DonorDrive Config
+	*/
+	public getDonorDriveCharities(channel: IChannel): Observable<IDonorDriveCharity[]> {
+		return this.jar.get<IDonorDriveCharity[]>(`channels/${channel.id}/integrations/donordrive/charities`)
+	}
+
+	public getDonorDriveParticipant(channel: IChannel, charityId: string, participantId: string): Observable<IDonorDriveParticipant> {
+		return this.jar.get<IDonorDriveParticipant>(
+			`channels/${channel.id}/integrations/donordrive/participant?charityId=${charityId}&participantId=${participantId}`,
+		);
+	}
+
+	public getDonorDrive(channel: IChannel): Observable<IDonorDrive> {
+		return this.jar.get<IDonorDrive>(`channels/${channel.id}/integrations/donordrive`)
+	}
+
+	public setDonorDriveConfiguration(channel: IChannel, cfg: IDonorDriveConfiguration): Observable<void> {
+		return this.jar.put<void>(`channels/${channel.id}/integrations/donordrive`, cfg)
 	}
 }
