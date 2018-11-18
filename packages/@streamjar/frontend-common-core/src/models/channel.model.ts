@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 
 import { HttpService } from '../services/http.service';
+import { pick } from '../utils';
 import { Dated } from './base';
 
 export interface IChannel extends Dated {
@@ -58,6 +59,10 @@ export class Channel {
 
 	public getAll(): Observable<IChannel[]> {
 		return this.jar.get<IChannel[]>(`channels`)
+	}
+
+	public update(channel: IChannel): Observable<IChannel> {
+		return this.jar.patch<IChannel>(`channels/${channel.id}`, pick(channel, ['tipsEnabled', 'botEnabled']));
 	}
 
 	public getRecentEvents(channel: IChannel): Observable<IEvent[]> {
