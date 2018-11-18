@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 
 import { HttpService } from '../services/http.service';
+import { pick } from '../utils';
 import { Dated } from './base';
 
 export interface IAccount  extends Dated {
@@ -9,6 +10,7 @@ export interface IAccount  extends Dated {
 	role: string;
 	avatar?: string;
 	primaryChannel: string;
+	optInMarketing: boolean;
 }
 
 export interface ILoginToken {
@@ -30,6 +32,8 @@ export interface IAccountInvite extends Dated {
 }
 
 export class Account {
+	public writable: string[] = ['optInMarketing'];
+
 	constructor(private jar: HttpService) {}
 
 	public get(): Promise<IAccount> {
@@ -64,5 +68,9 @@ export class Account {
 
 	public deleteInvite(invite: IAccountInvite): Observable<void> {
 		return this.jar.delete<void>(`account/invites/${invite.id}`);
+	}
+
+	public update(account: IAccount): Observable<IAccount> {
+		return this.jar.patch<IAccount>(`account`, pick(account, this.writable));
 	}
 }
