@@ -94,6 +94,10 @@ export class Settings {
 		return this.jar.patch<IPayment>(`channels/${channel.id}/settings/payment`, data);
 	}
 
+	public deletePayment(channel: IChannel): Observable<void> {
+		return this.jar.delete<void>(`channels/${channel.id}/settings/payment`);
+	}
+
 	public getLinks(channel: IChannel): Observable<ILinks> {
 		return this.jar.get<ILinks>(`channels/${channel.id}/settings/links`);
 	}
