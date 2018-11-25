@@ -12,8 +12,5 @@
     "tslint": "^5.11.0",
     "tslint-microsoft-contrib": "^5.1.0",
     "typescript": "^2.1.4"
-  },
-  "publishConfig": {
-    "registry": "https://npm.sjsrv.uk"
   }
 }

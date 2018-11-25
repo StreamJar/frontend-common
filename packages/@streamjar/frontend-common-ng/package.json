@@ -18,8 +18,5 @@
   },
   "peerDependencies": {
     "@angular/core": "^6.1.7"
-  },
-  "publishConfig": {
-    "registry": "https://npm.sjsrv.uk"
   }
 }
