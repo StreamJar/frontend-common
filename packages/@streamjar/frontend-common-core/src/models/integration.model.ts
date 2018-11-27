@@ -43,6 +43,7 @@ export interface ITwitterConfiguration {
 	liveMessage: string;
 	followerMessage: string;
 	subscriberMessage: string;
+	enabled: string[];
 }
 
 export interface ITwitter extends IIntegration {
