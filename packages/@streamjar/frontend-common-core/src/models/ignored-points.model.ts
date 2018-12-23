@@ -22,6 +22,6 @@ export class IgnoredPoints {
 	}
 
 	public delete(channel: IChannel, user: IIgnoredPointsUser): Observable<void> {
-		return this.jar.post<void>(`channels/${channel.id}/points/ignored/${user.platform}/${user.id}`, {});
+		return this.jar.delete<void>(`channels/${channel.id}/points/ignored/${user.platform}/${user.id}`);
 	}
 }
