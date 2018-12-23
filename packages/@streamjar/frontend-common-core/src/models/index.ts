@@ -9,6 +9,7 @@ import { Follower } from './follower.model';
 import { Font } from './font.model';
 import { Giveaway } from './giveaway.model';
 import { Goal } from './goal.model';
+import { IgnoredPoints } from './ignored-points.model';
 import { Integration } from './integration.model';
 import { Internal } from './internal.model';
 import { Invite } from './invite.model';
@@ -75,6 +76,7 @@ export { ApiDocs, IDocumentationCategory, IDocumentationEndpoint, IDocumentation
 	IDocumentationResponse } from './api-docs.model';
 export { OAuthShortcode, IShortcode, IShortcodeState, IShortcodeInfo } from './oauth-shortcode.model';
 export { Internal, IBotStatus, IBotStatusService, IBotStatusBot, IInternalChannel, IInternalService } from './internal.model';
+export { IIgnoredPointsUser, IgnoredPoints } from './ignored-points.model';
 
 export { BaseModel } from './base';
 
@@ -114,4 +116,5 @@ export const MODULES = [
 	Giveaway,
 	ViewerAccount,
 	Internal,
+	IgnoredPoints,
 ];

@@ -37,6 +37,7 @@ export function ViewerFactory(dep: HttpService) { return new Models.Viewer(dep);
 export function GiveawayFactory(dep: HttpService) { return new Models.Giveaway(dep); }
 export function ViewerAccountFactory(dep: HttpService) { return new Models.ViewerAccount(dep); }
 export function InternalFactory(dep: HttpService) { return new Models.Internal(dep); }
+export function IgnoredPointsFactory(dep: HttpService) { return new Models.IgnoredPoints(dep); }
 
 @NgModule({
     providers: [
@@ -75,6 +76,7 @@ export function InternalFactory(dep: HttpService) { return new Models.Internal(d
         { provide: Models.Giveaway, useFactory: GiveawayFactory, deps: [HttpService] },
         { provide: Models.ViewerAccount, useFactory: ViewerAccountFactory, deps: [HttpService] },
         { provide: Models.Internal, useFactory: InternalFactory, deps: [HttpService] },
+        { provide: Models.IgnoredPoints, useFactory: IgnoredPointsFactory, deps: [HttpService] },
     ]
 })
 export class FrontendCommonModule {
