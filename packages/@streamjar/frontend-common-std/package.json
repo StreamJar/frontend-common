@@ -1,6 +1,6 @@
 {
   "name": "@streamjar/frontend-common-std",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "Standard http adapter for StreamJar",
   "repository": {
     "type": "git",
@@ -10,7 +10,7 @@
   "typings": "dist/index.d.ts",
   "author": "Luke Thompson <luke@streamjar.tv>",
   "dependencies": {
-    "@streamjar/frontend-common-core": "^1.2.8",
+    "@streamjar/frontend-common-core": "^1.2.9",
     "rxjs": "^6.3.3"
   },
   "scripts": {

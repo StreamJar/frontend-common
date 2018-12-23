@@ -1,6 +1,6 @@
 {
   "name": "@streamjar/frontend-common-core",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "Frontend common for StreamJar",
   "repository": {
     "type": "git",
