@@ -26,19 +26,19 @@ export class Statistics {
 		return this.jar.get<ISummary>(`channels/${channel.id}/statistics/summary`);
 	}
 
-	public getViews(channel: IChannel): Observable<IStatistic[]> {
-		return this.jar.get<IStatistic[]>(`channels/${channel.id}/statistics/time/views?hours=24`);
+	public getViews(channel: IChannel, hours: number = 24): Observable<IStatistic[]> {
+		return this.jar.get<IStatistic[]>(`channels/${channel.id}/statistics/time/views?hours=${hours}`);
 	}
 
-	public getFollowers(channel: IChannel): Observable<IStatistic[]> {
-		return this.jar.get<IStatistic[]>(`channels/${channel.id}/statistics/time/followers?hours=24`);
+	public getFollowers(channel: IChannel, hours: number = 24): Observable<IStatistic[]> {
+		return this.jar.get<IStatistic[]>(`channels/${channel.id}/statistics/time/followers?hours=${hours}`);
 	}
 
-	public getMessages(channel: IChannel): Observable<IStatistic[]> {
-		return this.jar.get<IStatistic[]>(`channels/${channel.id}/statistics/time/messages?hours=24`);
+	public getMessages(channel: IChannel, hours: number = 24): Observable<IStatistic[]> {
+		return this.jar.get<IStatistic[]>(`channels/${channel.id}/statistics/time/messages?hours=${hours}`);
 	}
 
-	public getViewers(channel: IChannel): Observable<IStatistic[]> {
-		return this.jar.get<IStatistic[]>(`channels/${channel.id}/statistics/time/viewers?hours=24`);
+	public getViewers(channel: IChannel, hours: number = 24): Observable<IStatistic[]> {
+		return this.jar.get<IStatistic[]>(`channels/${channel.id}/statistics/time/viewers?hours=${hours}`);
 	}
 }
