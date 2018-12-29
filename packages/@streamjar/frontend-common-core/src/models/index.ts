@@ -66,7 +66,7 @@ export {
 	IDonorDriveConfiguration, IDonorDrive, IDonorDriveCharity, IDonorDriveParticipant,
 } from './integration.model';
 export { IGoogleFont, Font } from './font.model';
-export { Viewer, IViewer } from './viewer.model';
+export { Viewer, IViewer, IViewerWarning } from './viewer.model';
 export { ViewerAccount, IViewerAccount } from './viewer-account.model';
 export { Giveaway, IGiveawayWin } from './giveaway.model';
 export {
