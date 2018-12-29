@@ -45,4 +45,11 @@ export class Viewer extends BaseModel<IViewer> {
 	public deleteWarning(channel: IChannel, viewer: IViewer, warning: IViewerWarning): Observable<void> {
 		return this.jar.delete<void>(`channels/${channel.id}/viewers/${viewer.platform}/${viewer.name}/warnings/${warning.id}`);
 	}
+
+	public createTransaction(channel: IChannel, viewer: IViewer, reason: string, points: number): Observable<{ status: boolean }> {
+		return this.jar.post<{ status: boolean }>(`channels/${channel.id}/viewers/${viewer.platform}/${viewer.name}/transactions`, {
+			points,
+			reason,
+		})
+	}
 }
