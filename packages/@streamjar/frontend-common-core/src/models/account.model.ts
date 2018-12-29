@@ -53,7 +53,7 @@ export class Account {
 	}
 
 	public signup(
-		token: string, name: string, opts: { tipsEnabled?: boolean, botEnabled?: boolean; noChannel?: boolean } = {},
+		token: string, name: string, opts: { tipsEnabled?: boolean, botEnabled?: boolean; noChannel?: boolean, optInMarketing?: boolean } = {},
 	): Promise<ILoginToken> {
 		return this.jar.post<ILoginToken>(`account/signup`, { signup: token, username: name, ...opts}).toPromise()
 	}
