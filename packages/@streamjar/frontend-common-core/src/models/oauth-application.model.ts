@@ -9,7 +9,7 @@ export interface IOAuthApplication extends Dated, Identifiable {
 	website: string;
 	client?: string;
 	redirect: string;
-	secret?: string;
+	secret?: string | boolean; 
 	suspended?: boolean;
 }
 
