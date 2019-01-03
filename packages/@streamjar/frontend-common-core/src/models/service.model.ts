@@ -22,25 +22,21 @@ export class Service {
 		return this.jar.get<IService[]>(`channels/${channel.id}/services`);
 	}
 
-	public link(channelId: number, platform: string, code: string, state: string): Promise<IService> {
-		const data = { state, code, provider: platform };
-
+	public link(channelId: number, provider: string, data: { code?: string, state?: string; access_token?; string }): Promise<IService> {
 		if (data['state'] === '') {
 			delete data['state']
 		}
 
-		return this.jar.post<IService>(`channels/${channelId}/services`, data)
+		return this.jar.post<IService>(`channels/${channelId}/services`, { provider, ...data })
 			.toPromise();
 	}
 
-	public linkBot(channelId: number, platform: string, code: string, state: string): Promise<IService> {
-		const data = { state, code };
-
+	public linkBot(channelId: number, provider: string, data: { code?: string, state?: string; access_token?; string }): Promise<IService> {
 		if (data['state'] === '') {
 			delete data['state']
 		}
 
-		return this.jar.post<IService>(`channels/${channelId}/services/${platform}/bot`, data).toPromise();
+		return this.jar.post<IService>(`channels/${channelId}/services/${provider}/bot`, data).toPromise();
 	}
 
 	public getLoginURLs(channel: IChannel, platform: string): Observable<IServiceBotURL> {
