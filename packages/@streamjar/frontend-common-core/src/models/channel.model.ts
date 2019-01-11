@@ -48,6 +48,7 @@ export interface ITicket {
 	message: string;
 	subject: string;
 	topic: string;
+	location: string;
 }
 
 export class Channel {
