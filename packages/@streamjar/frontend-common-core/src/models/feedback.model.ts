@@ -46,6 +46,10 @@ export class Feedback {
 		return this.jar.get<IFeedbackItem[]>(`feedback${BaseModel.query(filter)}`);
 	}
 
+	public getOne(id: number): Observable<IFeedbackItem> {
+		return this.jar.get<IFeedbackItem>(`feedback/${id}`);
+	}
+
 	public create(data: { title: string; content: string; tag: string; }): Observable<IFeedbackItem> {
 		return this.jar.post<IFeedbackItem>(`feedback`, data);
 	}
