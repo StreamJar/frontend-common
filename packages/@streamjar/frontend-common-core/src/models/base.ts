@@ -32,6 +32,14 @@ export abstract class BaseModel<T> {
 	public endpoint: string;
 	public writable: string[] = [];
 
+	public static query(data: { [name: string]: string | string[] | undefined }): string {
+		if (!data || Object.keys(data).length === 0) {
+			return '';
+		}
+
+		return `?${Object.keys(data).map(key => `${key}=${data[key]}`).join('&')}`;
+	}
+
 	constructor(protected jar: HttpService) {}
 
 	public beforeHook?(T: any): T
@@ -50,16 +58,8 @@ export abstract class BaseModel<T> {
 		return pick(data, this.writable);
 	}
 
-	protected query(data: { [name: string]: string | string[] }): string {
-		if (!data || Object.keys(data).length === 0) {
-			return '';
-		}
-
-		return `?${Object.keys(data).map(key => `${key}=${data[key]}`).join('&')}`;
-	}
-
 	public getAll(channel: IChannel, query: { [name: string]: string | string[] } = {}): Observable<T[]> {
-		return this.jar.get(`channels/${channel.id}/${this.endpoint}${this.query(query)}`)
+		return this.jar.get(`channels/${channel.id}/${this.endpoint}${BaseModel.query(query)}`)
 			.pipe(map((val: T[]) => {
 				if (this.manipulateHook) {
 					return <T[]> val.map(value => this.manipulateHook && this.manipulateHook(value));

@@ -34,6 +34,7 @@ import { ViewerAccount } from './viewer-account.model';
 import { Viewer } from './viewer.model';
 import { Warning } from './warning.model';
 import { Website } from './website.model';
+import { Feedback } from './feedback.model';
 
 export { IAccount, Account, IAccountInvite } from './account.model';
 export { IChannel, Channel, IEvent, IStatus, IStatuses, ITicket } from './channel.model';
@@ -76,7 +77,8 @@ export { ApiDocs, IDocumentationCategory, IDocumentationEndpoint, IDocumentation
 	IDocumentationResponse } from './api-docs.model';
 export { OAuthShortcode, IShortcode, IShortcodeState, IShortcodeInfo } from './oauth-shortcode.model';
 export { Internal, IBotStatus, IBotStatusService, IBotStatusBot, IInternalChannel, IInternalService } from './internal.model';
-export { IIgnoredPointsUser, IgnoredPoints } from './ignored-points.model';
+export { IgnoredPoints, IIgnoredPointsUser } from './ignored-points.model';
+export { Feedback, IFeedbackComment, IFeedbackItem, IFeedbackStatus, IFeedbackTag, IFeedbackUser } from './feedback.model';
 
 export { BaseModel } from './base';
 
@@ -117,4 +119,5 @@ export const MODULES = [
 	ViewerAccount,
 	Internal,
 	IgnoredPoints,
+	Feedback,
 ];
