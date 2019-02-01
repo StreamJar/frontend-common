@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpService } from '../services/http.service';
 import { BaseModel, Dated, Identifiable } from './base';
 
-export interface IFeedbackItem  extends Dated, Identifiable {
+export interface IFeedbackItem extends Dated, Identifiable {
 	title: string;
 	content: string;
 	votes: number;
@@ -11,6 +11,10 @@ export interface IFeedbackItem  extends Dated, Identifiable {
 	tag: string;
 	user: IFeedbackUser;
 	pinnedComment: IFeedbackComment;
+	vote: {
+		value: number;
+		notify: boolean;
+	} | null
 }
 
 export interface IFeedbackUser {
