@@ -60,6 +60,10 @@ export class Feedback {
 		return this.jar.get<IFeedbackTag[]>(`feedback/tags`);
 	}
 
+	public getStatuses(): Observable<IFeedbackStatus[]> {
+		return this.jar.get<IFeedbackTag[]>(`feedback/statuses`);
+	}
+
 	public getComments(item: IFeedbackItem): Observable<IFeedbackComment[]> {
 		return this.jar.get<IFeedbackComment[]>(`feedback/${item.id}/comments`);
 	}
