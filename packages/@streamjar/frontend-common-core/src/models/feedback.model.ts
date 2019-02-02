@@ -9,6 +9,8 @@ export interface IFeedbackItem extends Dated, Identifiable {
 	votes: number;
 	status: string;
 	tag: string;
+	slug: string;
+	comments: number;
 	user: IFeedbackUser;
 	pinnedComment: IFeedbackComment;
 	vote: {
@@ -50,6 +52,10 @@ export class Feedback {
 		return this.jar.get<IFeedbackItem>(`feedback/${id}`);
 	}
 
+	public myVotes(): Observable<IFeedbackItem[]> {
+		return this.jar.get<IFeedbackItem[]>(`feedback/me`);
+	}
+
 	public create(data: { title: string; content: string; tag: string; }): Observable<IFeedbackItem> {
 		return this.jar.post<IFeedbackItem>(`feedback`, data);
 	}
@@ -80,5 +86,13 @@ export class Feedback {
 		item: IFeedbackItem, content: string, meta: { notify?: boolean; status?: string; pin?: boolean } = {},
 	): Observable<IFeedbackComment> {
 		return this.jar.post<IFeedbackComment>(`feedback/${item.id}/comments`, { content, ...meta });
+	}
+
+	public pinComment(item: IFeedbackItem, comment: IFeedbackComment): Observable<void> {
+		return this.jar.post<void>(`feedback/${item.id}/comments/${comment.id}/pin`, {});
+	}
+
+	public destroyComment(item: IFeedbackItem, comment: IFeedbackComment): Observable<void> {
+		return this.jar.delete<void>(`feedback/${item.id}/comments/${comment.id}`);
 	}
 }
