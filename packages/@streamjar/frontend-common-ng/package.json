@@ -1,6 +1,6 @@
 {
   "name": "@streamjar/frontend-common-ng",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "Frontend common for StreamJar",
   "repository": {
     "type": "git",
@@ -10,7 +10,7 @@
   "typings": "dist/index.d.ts",
   "author": "Luke Thompson <luke@streamjar.tv>",
   "dependencies": {
-    "@streamjar/frontend-common-core": "^1.3.6"
+    "@streamjar/frontend-common-core": "^1.3.7"
   },
   "scripts": {
     "build": "rimraf dist/ && ngc -p ./tsconfig.json",
