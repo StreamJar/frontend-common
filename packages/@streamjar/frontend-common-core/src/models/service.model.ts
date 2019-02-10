@@ -9,7 +9,15 @@ export interface IService extends Dated {
 	name: string;
 	platform: string;
 	enabled: boolean;
+	health: 'healthy' | 'unhealthy' | 'pending' | 'dupe' | 'missing';
 }
+
+// Bot Healths:
+// healthy - we thing everything is good
+// unhealthy - something is wrong
+// pending - it's in the queue
+// dupe - clones?!
+// missing - oh no
 
 export interface IServiceBotURL {
 	url: string;
