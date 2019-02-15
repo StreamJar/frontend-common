@@ -39,6 +39,8 @@ export function ViewerAccountFactory(dep: HttpService) { return new Models.Viewe
 export function InternalFactory(dep: HttpService) { return new Models.Internal(dep); }
 export function IgnoredPointsFactory(dep: HttpService) { return new Models.IgnoredPoints(dep); }
 export function FeedbackFactory(dep: HttpService) { return new Models.Feedback(dep); }
+export function HelpArticleFactory(dep: HttpService) { return new Models.HelpArticle(dep); }
+export function HelpCategoryFactory(dep: HttpService) { return new Models.HelpCategory(dep); }
 
 @NgModule({
     providers: [
@@ -79,6 +81,8 @@ export function FeedbackFactory(dep: HttpService) { return new Models.Feedback(d
         { provide: Models.Internal, useFactory: InternalFactory, deps: [HttpService] },
         { provide: Models.IgnoredPoints, useFactory: IgnoredPointsFactory, deps: [HttpService] },
         { provide: Models.Feedback, useFactory: FeedbackFactory, deps: [HttpService] },
+        { provide: Models.HelpArticle, useFactory: HelpArticleFactory, deps: [HttpService] },
+        { provide: Models.HelpCategory, useFactory: HelpCategoryFactory, deps: [HttpService] },
     ]
 })
 export class FrontendCommonModule {
