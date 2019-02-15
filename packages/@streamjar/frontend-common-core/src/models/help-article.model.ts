@@ -31,6 +31,10 @@ export class HelpArticle {
 		return this.jar.post<IHelpArticle>('help/articles', data);
 	}
 
+	public getOne(id: number): Observable<IHelpArticle> {
+		return this.jar.get<IHelpArticle>(`help/articles/${id}`);
+	}
+
 	public update(article: IHelpArticle): Observable<IHelpArticle> {
 		return this.jar.patch<IHelpArticle>(`help/articles/${article.id}`, pick(article, ['title', 'body']));
 	}
