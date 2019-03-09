@@ -48,7 +48,7 @@ export class ApiDocs {
 	}
 
 	private getHostname(data): string {
-		return `${data.content[0].attributes.metadata.content.find.find(i => {
+		return `${data.content[0].attributes.metadata.content.find(i => {
 			return i.content.key.content === 'HOST';
 		}).content.value.content}v2`;
 	}
