@@ -48,7 +48,7 @@ export class ApiDocs {
 	}
 
 	private getHostname(data): string {
-		return `${data.content[0].attributes.meta.find(i => {
+		return `${data.content[0].attributes.metadata.content.find.find(i => {
 			return i.content.key.content === 'HOST';
 		}).content.value.content}v2`;
 	}
@@ -57,7 +57,7 @@ export class ApiDocs {
 		return data.content[0].content.map(g => {
 			return {
 				groups: this.getGroups(this.getHostname(data), g.content),
-				name: g.meta.title,
+				name: g.meta.title.content,
 			}
 		});
 	}
@@ -66,26 +66,26 @@ export class ApiDocs {
 		return data.map(c => {
 			return {
 				endpoints: c.content.map(ref => this.getEndpoint(baseUrl, ref, c.attributes.href)),
-				name: c.meta.title,
+				name: c.meta.title.content,
 			};
 		});
 	}
 
-	private getEndpoint(baseUrl: string, i, url: string): IDocumentationEndpoint {
+	private getEndpoint(baseUrl: string, i, url: { content: string }): IDocumentationEndpoint {
 		const description = this.getElement(i.content, 'copy').content;
 		const method = this.getElement(i.content, 'httpTransaction').content[0].attributes.method;
 		const scope = description.match(new RegExp(/\*Required authentication scope:\* `([a-zA-Z0-0:\(\)]+)`/));
 
 		return <IDocumentationEndpoint>{
-			bodyParams: this.getParams(i.attributes && i.attributes.data ? i.attributes.data.content[0].content : []),
+			bodyParams: this.getParams(i.attributes && i.attributes.data ? i.attributes.data.content.content : []),
 			description: description.replace(new RegExp(/\n\n\*Required authentication scope:\* `([a-zA-Z0-0:\(\)]+)`/), ''),
-			method,
-			name: i.meta.title,
+			method: method.content,
+			name: i.meta.title.content,
 			responses: this.getResponses(i.content),
 			scope: (scope && scope[1] !== '(none)') ? scope[1] : null,
 			url: [
 				{ value: baseUrl, type: 'string' },
-				...url.split(/({.*?})/).filter(a => !!a).map(a => ({
+				...url.content.split(/({.*?})/).filter(a => !!a).map(a => ({
 					type: new RegExp(/({.*?})/).test(a) ? 'variable' : 'string',
 					value: a,
 				})).filter(a => !!a.value),
@@ -104,20 +104,22 @@ export class ApiDocs {
 			.map(i => i.content[1])
 			.map(i => ({
 				body: JSON.parse(i.content[0] ? i.content[0].content : null),
-				statusCode: +i.attributes.statusCode,
+				statusCode: +i.attributes.statusCode.content,
 			}));
 	}
 
 	private getParams(params: any[]): IDocumentationParam[] {
-		return <any>params.map(param => {
+		return <any>(params || []).map(param => {
 			if (!param.meta || !param.content.key.content) {
 				return null;
 			}
 
+			const required = !!(param.attributes.typeAttributes || { content: [] }).content.find(i => i.content === 'required');
+
 			return <IDocumentationParam>{
-				description: param.meta.description,
+				description: param.meta.description.content,
 				key: param.content.key.content,
-				required: (param.attributes && param.attributes.typeAttributes || []).includes('required'),
+				required,
 				value: {
 					type: param.content.value.element,
 					value: Array.isArray(param.content.value.content) ? param.content.value.content.map(i => i.content) : param.content.value.content,
