@@ -20,6 +20,11 @@ export interface IHelpArticle extends IHelpArticleSummary {
 	body: string;
 }
 
+export interface IHelpArticleSearch {
+	slug: string;
+	title: string;
+}
+
 export class HelpArticle {
 	constructor(private jar: HttpService) {}
 
@@ -41,5 +46,9 @@ export class HelpArticle {
 
 	public destroy(article: IHelpArticle): Observable<void> {
 		return this.jar.delete<void>(`help/articles/${article.id}`);
+	}
+
+	public search(query: string): Observable<IHelpArticleSearch[]> {
+		return this.jar.get<IHelpArticle[]>(`help/articles/search?query=${query}`);
 	}
 }

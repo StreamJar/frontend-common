@@ -1,5 +1,5 @@
-import { HttpService } from '@streamjar/frontend-common-core';
 import { Observable } from 'rxjs';
+import { HttpService } from '../services';
 import { pick } from '../utils';
 import { Dated, Identifiable } from './base';
 

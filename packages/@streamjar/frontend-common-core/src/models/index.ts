@@ -81,7 +81,7 @@ export { OAuthShortcode, IShortcode, IShortcodeState, IShortcodeInfo } from './o
 export { Internal, IBotStatus, IBotStatusService, IBotStatusBot, IInternalChannel, IInternalService } from './internal.model';
 export { IgnoredPoints, IIgnoredPointsUser } from './ignored-points.model';
 export { Feedback, IFeedbackComment, IFeedbackItem, IFeedbackStatus, IFeedbackTag, IFeedbackUser } from './feedback.model';
-export { HelpArticle, IHelpArticle, IHelpArticleSummary } from './help-article.model';
+export { HelpArticle, IHelpArticle, IHelpArticleSummary, IHelpArticleSearch } from './help-article.model';
 export { HelpCategory, IHelpCategory } from './help-category.model';
 
 export { BaseModel } from './base';
