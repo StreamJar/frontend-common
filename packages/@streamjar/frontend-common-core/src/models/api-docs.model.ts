@@ -2,9 +2,14 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpService } from '../services';
 
+
+// tslint:disable
+const keys = (i) => Object.keys(i).map(j => i[j]);
+
 export interface IDocumentationCategory {
 	name: string;
 	groups: IDocumentationGroup[];
+	models: { [key: string]: any };
 }
 
 export interface IDocumentationResponse {
@@ -15,16 +20,17 @@ export interface IDocumentationResponse {
 export interface IDocumentationGroup {
 	name: string;
 	endpoints: IDocumentationEndpoint[];
+	internal: boolean;
 }
 
 export interface IDocumentationParam {
-	required: boolean;
-	key: string;
+	name: string;
+	enumValue: boolean;
+	defaultValue?: string;
+	values?: string[];
+	kind: string;
+	optional: boolean;
 	description: string;
-	value: {
-		type: string;
-		value: string | string[];
-	}
 }
 
 export interface IDocumentationEndpoint {
@@ -35,6 +41,7 @@ export interface IDocumentationEndpoint {
 	bodyParams: IDocumentationParam[],
 	description: string;
 	scope: string | null;
+	internal: boolean;
 	responses: IDocumentationResponse[]
 }
 
@@ -43,88 +50,63 @@ export class ApiDocs {
 	}
 
 	public getDocumentation(): Observable<IDocumentationCategory[]> {
-		return this.jar.get('docs?format=json')
+		return this.jar.get('docs?format=jar')
 			.pipe(map(value => this.getCategories(value)));
 	}
 
 	private getHostname(data): string {
-		return `${data.content[0].attributes.metadata.content.find(i => {
-			return i.content.key.content === 'HOST';
-		}).content.value.content}v2`;
+		return `${data.baseEndpoint}v2`;
 	}
 
 	private getCategories(data): IDocumentationCategory[] {
-		return data.content[0].content.map(g => {
+		return data.groups.map(g => {
 			return {
-				groups: this.getGroups(this.getHostname(data), g.content),
-				name: g.meta.title.content,
+				name: g.name,
+				models: g.models,
+				groups: this.getGroups(this.getHostname(data), g, g.models),
 			}
 		});
 	}
 
-	private getGroups(baseUrl: string, data: any): IDocumentationGroup[] {
-		return data.map(c => {
+	private getGroups(baseUrl: string, data: any, models: { [key: string]: any }): IDocumentationGroup[] {
+		return data.resources.map(c => {
 			return {
-				endpoints: c.content.map(ref => this.getEndpoint(baseUrl, ref, c.attributes.href)),
-				name: c.meta.title.content,
-			};
+				name: c.name,
+				internal: c.internal,
+				endpoints: keys(c.methods).map(ref => this.getEndpoint(baseUrl, ref, c.endpoint, models)),
+			};	
 		});
 	}
 
-	private getEndpoint(baseUrl: string, i, url: { content: string }): IDocumentationEndpoint {
-		const description = this.getElement(i.content, 'copy').content;
-		const method = this.getElement(i.content, 'httpTransaction').content[0].attributes.method;
-		const scope = description.match(new RegExp(/\*Required authentication scope:\* `([a-zA-Z0-0:\(\)]+)`/));
-
+	private getEndpoint(baseUrl: string, i, url: string, models: { [key: string]: any }): IDocumentationEndpoint {
 		return <IDocumentationEndpoint>{
-			bodyParams: this.getParams(i.attributes && i.attributes.data ? i.attributes.data.content.content : []),
-			description: description.replace(new RegExp(/\n\n\*Required authentication scope:\* `([a-zA-Z0-0:\(\)]+)`/), ''),
-			method: method.content,
-			name: i.meta.title.content,
-			responses: this.getResponses(i.content),
-			scope: (scope && scope[1] !== '(none)') ? scope[1] : null,
+			bodyParams: this.getParams(i.payload),
+			description: i.description,
+			method: i.method,
+			name: i.name,
+			responses: this.getResponses(i.responses, models),
+			scope: i.scope,
+			internal: i.internal,
 			url: [
 				{ value: baseUrl, type: 'string' },
-				...url.content.split(/({.*?})/).filter(a => !!a).map(a => ({
+				...`${url}${i.endpoint}`.split(/({.*?})/).filter(a => !!a).map(a => ({
 					type: new RegExp(/({.*?})/).test(a) ? 'variable' : 'string',
 					value: a,
 				})).filter(a => !!a.value),
 			],
-			urlParams: this.getParams(i.attributes && i.attributes.hrefVariables ? i.attributes.hrefVariables.content : []),
+			urlParams: this.getParams(i.params),
 		};
 	}
 
-	private getElement(arr, val) {
-		return arr.find(i => i.element === val);
-	}
-
-	private getResponses(content): IDocumentationResponse[] {
+	private getResponses(content, models: { [key: string]: any }): IDocumentationResponse[] {
 		return content
-			.filter(i => i.element === 'httpTransaction')
-			.map(i => i.content[1])
 			.map(i => ({
-				body: JSON.parse(i.content[0] ? i.content[0].content : null),
-				statusCode: +i.attributes.statusCode.content,
+				body: i.kind === 'model' ? models[i.value] : i.value,
+				statusCode: +i.name,
 			}));
 	}
 
-	private getParams(params: any[]): IDocumentationParam[] {
-		return <any>(params || []).map(param => {
-			if (!param.meta || !param.content.key.content) {
-				return null;
-			}
-
-			const required = !!(param.attributes.typeAttributes || { content: [] }).content.find(i => i.content === 'required');
-
-			return <IDocumentationParam>{
-				description: param.meta.description.content,
-				key: param.content.key.content,
-				required,
-				value: {
-					type: param.content.value.element,
-					value: Array.isArray(param.content.value.content) ? param.content.value.content.map(i => i.content) : param.content.value.content,
-				},
-			};
-		}).filter(i => i !== null);
+	private getParams(params: any): IDocumentationParam[] {
+		return keys(params);
 	}
 }
