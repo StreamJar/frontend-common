@@ -38,6 +38,7 @@ export interface IDocumentationEndpoint {
 	name: string;
 	url: { value: string, type: string }[],
 	urlParams: IDocumentationParam[],
+	queryParams: IDocumentationParam[],
 	bodyParams: IDocumentationParam[],
 	description: string;
 	scope: string | null;
@@ -95,6 +96,7 @@ export class ApiDocs {
 				})).filter(a => !!a.value),
 			],
 			urlParams: this.getParams(i.params),
+			queryParams: this.getParams(i.query),
 		};
 	}
 
