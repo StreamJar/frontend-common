@@ -21,7 +21,9 @@ export interface IDocumentationGroup {
 	name: string;
 	endpoints: IDocumentationEndpoint[];
 	internal: boolean;
+	subGroup: string | null;
 }
+
 
 export interface IDocumentationParam {
 	name: string;
@@ -56,7 +58,7 @@ export class ApiDocs {
 	}
 
 	private getHostname(data): string {
-		return `${data.baseEndpoint}v2`;
+		return `${data.baseEndpoint}/v2`;
 	}
 
 	private getCategories(data): IDocumentationCategory[] {
@@ -74,6 +76,7 @@ export class ApiDocs {
 			return {
 				name: c.name,
 				internal: c.internal,
+				subGroup: c.subGroup,
 				endpoints: keys(c.methods).map(ref => this.getEndpoint(baseUrl, ref, c.endpoint, models)),
 			};	
 		});
