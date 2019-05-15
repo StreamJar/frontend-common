@@ -37,6 +37,7 @@ import { Website } from './website.model';
 import { Feedback } from './feedback.model';
 import { HelpArticle } from './help-article.model';
 import { HelpCategory } from './help-category.model';
+import { OverlayScene } from './overlay-scene.model';
 
 export { IAccount, Account, IAccountInvite } from './account.model';
 export { IChannel, Channel, IEvent, IStatus, IStatuses, ITicket } from './channel.model';
@@ -83,6 +84,7 @@ export { IgnoredPoints, IIgnoredPointsUser } from './ignored-points.model';
 export { Feedback, IFeedbackComment, IFeedbackItem, IFeedbackStatus, IFeedbackTag, IFeedbackUser } from './feedback.model';
 export { HelpArticle, IHelpArticle, IHelpArticleSummary, IHelpArticleSearch } from './help-article.model';
 export { HelpCategory, IHelpCategory } from './help-category.model';
+export { IOverlayScene, OverlayScene } from './overlay-scene.model';
 
 export { BaseModel } from './base';
 
@@ -126,4 +128,5 @@ export const MODULES = [
 	Feedback,
 	HelpArticle,
 	HelpCategory,
+	OverlayScene,
 ];
