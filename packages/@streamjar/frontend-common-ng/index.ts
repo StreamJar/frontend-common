@@ -41,6 +41,7 @@ export function IgnoredPointsFactory(dep: HttpService) { return new Models.Ignor
 export function FeedbackFactory(dep: HttpService) { return new Models.Feedback(dep); }
 export function HelpArticleFactory(dep: HttpService) { return new Models.HelpArticle(dep); }
 export function HelpCategoryFactory(dep: HttpService) { return new Models.HelpCategory(dep); }
+export function OverlaySceneFactory(dep: HttpService) { return new Models.OverlayScene(dep); }
 
 @NgModule({
     providers: [
@@ -83,6 +84,7 @@ export function HelpCategoryFactory(dep: HttpService) { return new Models.HelpCa
         { provide: Models.Feedback, useFactory: FeedbackFactory, deps: [HttpService] },
         { provide: Models.HelpArticle, useFactory: HelpArticleFactory, deps: [HttpService] },
         { provide: Models.HelpCategory, useFactory: HelpCategoryFactory, deps: [HttpService] },
+        { provide: Models.OverlayScene, useFactory: OverlaySceneFactory, deps: [HttpService] },
     ]
 })
 export class FrontendCommonModule {
