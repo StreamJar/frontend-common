@@ -10,7 +10,7 @@ export interface IOverlayScene extends Identifiable, Dated {
 }
 
 export class OverlayScene extends BaseModel<IOverlayScene> {
-	public writable: string[] = ['color', 'width', 'height', 'name' ];
+	public writable: string[] = ['color', 'width', 'height', 'name', 'sceneId']; // sceneId is a weird quirk of the api
 
 	public endpoint = 'overlay/scenes';
 
