@@ -10,8 +10,9 @@
   "typings": "dist/src/index.d.ts",
   "author": "Luke Thompson <luke@streamjar.tv>",
   "dependencies": {
-    "@types/js-cookie": "^2.2.0",
-    "js-cookie": "^2.2.0"
+    "@types/js-cookie": "^2.2.2",
+    "js-cookie": "^2.2.0",
+    "rxjs": "^6.5.2"
   },
   "peerDependencies": {
     "rxjs": "^6.2.1"

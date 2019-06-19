@@ -11,7 +11,7 @@
   "author": "Luke Thompson <luke@streamjar.tv>",
   "dependencies": {
     "@streamjar/frontend-common-core": "^1.4.5",
-    "rxjs": "^6.3.3"
+    "rxjs": "^6.5.2"
   },
   "scripts": {
     "build": "rimraf dist/ && tsc -p ./tsconfig.json",

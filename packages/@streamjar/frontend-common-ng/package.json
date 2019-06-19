@@ -17,6 +17,6 @@
     "lint": "tslint --project ."
   },
   "peerDependencies": {
-    "@angular/core": "^6.1.7"
+    "@angular/core": "^8.0.1"
   }
 }
