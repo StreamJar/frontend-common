@@ -8,6 +8,7 @@ export interface IOverlayScene extends Identifiable, Dated {
 	width: number;
 	name: string;
 	number: number;
+	sources: number;
 	overlayScreenshot: string | null;
 }
 
