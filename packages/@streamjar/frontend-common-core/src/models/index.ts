@@ -41,7 +41,7 @@ import { OverlayScene } from './overlay-scene.model';
 
 export { IAccount, Account, IAccountInvite } from './account.model';
 export { IChannel, Channel, IEvent, IStatus, IStatuses, ITicket } from './channel.model';
-export { ITip, Tip, IExternalTip } from './tip.model';
+export { ITip, Tip, IExternalTip, IPaymentGatewayConfig } from './tip.model';
 export { ISummary, Statistics } from './statistics.model';
 export { IFollower, Follower } from './follower.model';
 export { ISubscriber, Subscriber } from './subscriber.model';
