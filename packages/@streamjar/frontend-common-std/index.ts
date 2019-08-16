@@ -6,7 +6,7 @@ let apiAdapter: JarService;
 export class InvalidResponseError extends Error {
 	public statusCode: number;
 
-	constructor(response: Response) {
+	constructor(response: Response, public payload: any) {
 		super(`Error ${response.status}`);
 		this.statusCode = response.status;
 		Object.setPrototypeOf(this, InvalidResponseError.prototype);
@@ -14,9 +14,9 @@ export class InvalidResponseError extends Error {
 }
 
 export class JarService extends HttpService {
-	private getHeadersFn: (url: string) =>  Promise<{ [key: string]: string }>;
+	private getHeadersFn: (url: string) => Promise<{ [key: string]: string }>;
 
-	constructor(config: { version: string, endpoint: string}, headersFn?: (url: string) =>  Promise<{ [key: string]: string }>) {
+	constructor(config: { version: string, endpoint: string }, headersFn?: (url: string) => Promise<{ [key: string]: string }>) {
 		super(config);
 
 		if (headersFn) {
@@ -59,9 +59,9 @@ export class JarService extends HttpService {
 				body: bodyValue,
 				headers: headers,
 				method: method.toUpperCase(),
-			}).then((value) => {
+			}).then(async (value) => {
 				if (!value.ok) {
-					throw new InvalidResponseError(value);
+					throw new InvalidResponseError(value, await value.json());
 				}
 
 				if (value.status === 204) {
