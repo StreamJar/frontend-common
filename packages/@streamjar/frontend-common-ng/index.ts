@@ -42,6 +42,7 @@ export function FeedbackFactory(dep: HttpService) { return new Models.Feedback(d
 export function HelpArticleFactory(dep: HttpService) { return new Models.HelpArticle(dep); }
 export function HelpCategoryFactory(dep: HttpService) { return new Models.HelpCategory(dep); }
 export function OverlaySceneFactory(dep: HttpService) { return new Models.OverlayScene(dep); }
+export function IncinerateFactory(dep: HttpService) { return new Models.Incinerate(dep); }
 
 @NgModule({
     providers: [
@@ -85,6 +86,7 @@ export function OverlaySceneFactory(dep: HttpService) { return new Models.Overla
         { provide: Models.HelpArticle, useFactory: HelpArticleFactory, deps: [HttpService] },
         { provide: Models.HelpCategory, useFactory: HelpCategoryFactory, deps: [HttpService] },
         { provide: Models.OverlayScene, useFactory: OverlaySceneFactory, deps: [HttpService] },
+        { provide: Models.Incinerate, useFactory: IncinerateFactory, deps: [HttpService] },
     ]
 })
 export class FrontendCommonModule {

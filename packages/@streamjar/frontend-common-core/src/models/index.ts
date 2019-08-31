@@ -38,6 +38,7 @@ import { Feedback } from './feedback.model';
 import { HelpArticle } from './help-article.model';
 import { HelpCategory } from './help-category.model';
 import { OverlayScene } from './overlay-scene.model';
+import { Incinerate } from './incinerate.model';
 
 export { IAccount, Account, IAccountInvite } from './account.model';
 export { IChannel, Channel, IEvent, IStatus, IStatuses, ITicket } from './channel.model';
@@ -85,6 +86,7 @@ export { Feedback, IFeedbackComment, IFeedbackItem, IFeedbackStatus, IFeedbackTa
 export { HelpArticle, IHelpArticle, IHelpArticleSummary, IHelpArticleSearch } from './help-article.model';
 export { HelpCategory, IHelpCategory } from './help-category.model';
 export { IOverlayScene, OverlayScene } from './overlay-scene.model';
+export { IIncineratorExport, IIncineratorRequestResponse, IIncineratorState, Incinerate } from './incinerate.model';
 
 export { BaseModel } from './base';
 
@@ -129,4 +131,5 @@ export const MODULES = [
 	HelpArticle,
 	HelpCategory,
 	OverlayScene,
+	Incinerate,
 ];
