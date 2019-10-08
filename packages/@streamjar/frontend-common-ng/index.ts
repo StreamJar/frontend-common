@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import * as Models from '@streamjar/frontend-common-core/models';
 import { HttpService } from '@streamjar/frontend-common-core';
+import * as Models from '@streamjar/frontend-common-core/models';
 
+// tslint:disable only-arrow-functions
 export function AccountFactory(dep: HttpService) { return new Models.Account(dep); }
 export function ApiDocsFactory(dep: HttpService) { return new Models.ApiDocs(dep); }
 export function ChannelFactory(dep: HttpService) { return new Models.Channel(dep); }
@@ -42,50 +43,51 @@ export function FeedbackFactory(dep: HttpService) { return new Models.Feedback(d
 export function HelpArticleFactory(dep: HttpService) { return new Models.HelpArticle(dep); }
 export function HelpCategoryFactory(dep: HttpService) { return new Models.HelpCategory(dep); }
 export function OverlaySceneFactory(dep: HttpService) { return new Models.OverlayScene(dep); }
+// tslint:enable only-arrow-functions
 
 @NgModule({
-    providers: [
-        { provide: Models.Account, useFactory: AccountFactory, deps: [HttpService] },
-        { provide: Models.ApiDocs, useFactory: ApiDocsFactory, deps: [HttpService] },
-        { provide: Models.Channel, useFactory: ChannelFactory, deps: [HttpService] },
-        { provide: Models.Statistics, useFactory: StatisticsFactory, deps: [HttpService] },
-        { provide: Models.Follower, useFactory: FollowerFactory, deps: [HttpService] },
-        { provide: Models.Subscriber, useFactory: SubscriberFactory, deps: [HttpService] },
-        { provide: Models.Invite, useFactory: InviteFactory, deps: [HttpService] },
-        { provide: Models.Permission, useFactory: PermissionFactory, deps: [HttpService] },
-        { provide: Models.Service, useFactory: ServiceFactory, deps: [HttpService] },
-        { provide: Models.Goal, useFactory: GoalFactory, deps: [HttpService] },
-        { provide: Models.Quote, useFactory: QuoteFactory, deps: [HttpService] },
-        { provide: Models.Command, useFactory: CommandFactory, deps: [HttpService] },
-        { provide: Models.Message, useFactory: MessageFactory, deps: [HttpService] },
-        { provide: Models.Settings, useFactory: SettingsFactory, deps: [HttpService] },
-        { provide: Models.Website, useFactory: WebsiteFactory, deps: [HttpService] },
-        { provide: Models.Filter, useFactory: FilterFactory, deps: [HttpService] },
-        { provide: Models.Rank, useFactory: RankFactory, deps: [HttpService] },
-        { provide: Models.Boost, useFactory: BoostFactory, deps: [HttpService] },
-        { provide: Models.TimedMessage, useFactory: TimedMessageFactory, deps: [HttpService] },
-        { provide: Models.Warning, useFactory: WarningFactory, deps: [HttpService] },
-        { provide: Models.Panel, useFactory: PanelFactory, deps: [HttpService] },
-        { provide: Models.Points, useFactory: PointsFactory, deps: [HttpService] },
-        { provide: Models.OAuthApplication, useFactory: OAuthApplicationFactory, deps: [HttpService] },
-        { provide: Models.OAuthShortcode, useFactory: OAuthShortcodeFactory, deps: [HttpService] },
-        { provide: Models.Tip, useFactory: TipFactory, deps: [HttpService] },
-        { provide: Models.Authorization, useFactory: AuthorizationFactory, deps: [HttpService] },
-        { provide: Models.Platform, useFactory: PlatformFactory, deps: [HttpService] },
-        { provide: Models.Session, useFactory: SessionFactory, deps: [HttpService] },
-        { provide: Models.Tipper, useFactory: TipperFactory, deps: [HttpService] },
-        { provide: Models.Integration, useFactory: IntegrationFactory, deps: [HttpService] },
-        { provide: Models.Font, useFactory: FontFactory, deps: [HttpService] },
-        { provide: Models.Viewer, useFactory: ViewerFactory, deps: [HttpService] },
-        { provide: Models.Giveaway, useFactory: GiveawayFactory, deps: [HttpService] },
-        { provide: Models.ViewerAccount, useFactory: ViewerAccountFactory, deps: [HttpService] },
-        { provide: Models.Internal, useFactory: InternalFactory, deps: [HttpService] },
-        { provide: Models.IgnoredPoints, useFactory: IgnoredPointsFactory, deps: [HttpService] },
-        { provide: Models.Feedback, useFactory: FeedbackFactory, deps: [HttpService] },
-        { provide: Models.HelpArticle, useFactory: HelpArticleFactory, deps: [HttpService] },
-        { provide: Models.HelpCategory, useFactory: HelpCategoryFactory, deps: [HttpService] },
-        { provide: Models.OverlayScene, useFactory: OverlaySceneFactory, deps: [HttpService] },
-    ]
+	providers: [
+		{ provide: Models.Account, useFactory: AccountFactory, deps: [HttpService] },
+		{ provide: Models.ApiDocs, useFactory: ApiDocsFactory, deps: [HttpService] },
+		{ provide: Models.Channel, useFactory: ChannelFactory, deps: [HttpService] },
+		{ provide: Models.Statistics, useFactory: StatisticsFactory, deps: [HttpService] },
+		{ provide: Models.Follower, useFactory: FollowerFactory, deps: [HttpService] },
+		{ provide: Models.Subscriber, useFactory: SubscriberFactory, deps: [HttpService] },
+		{ provide: Models.Invite, useFactory: InviteFactory, deps: [HttpService] },
+		{ provide: Models.Permission, useFactory: PermissionFactory, deps: [HttpService] },
+		{ provide: Models.Service, useFactory: ServiceFactory, deps: [HttpService] },
+		{ provide: Models.Goal, useFactory: GoalFactory, deps: [HttpService] },
+		{ provide: Models.Quote, useFactory: QuoteFactory, deps: [HttpService] },
+		{ provide: Models.Command, useFactory: CommandFactory, deps: [HttpService] },
+		{ provide: Models.Message, useFactory: MessageFactory, deps: [HttpService] },
+		{ provide: Models.Settings, useFactory: SettingsFactory, deps: [HttpService] },
+		{ provide: Models.Website, useFactory: WebsiteFactory, deps: [HttpService] },
+		{ provide: Models.Filter, useFactory: FilterFactory, deps: [HttpService] },
+		{ provide: Models.Rank, useFactory: RankFactory, deps: [HttpService] },
+		{ provide: Models.Boost, useFactory: BoostFactory, deps: [HttpService] },
+		{ provide: Models.TimedMessage, useFactory: TimedMessageFactory, deps: [HttpService] },
+		{ provide: Models.Warning, useFactory: WarningFactory, deps: [HttpService] },
+		{ provide: Models.Panel, useFactory: PanelFactory, deps: [HttpService] },
+		{ provide: Models.Points, useFactory: PointsFactory, deps: [HttpService] },
+		{ provide: Models.OAuthApplication, useFactory: OAuthApplicationFactory, deps: [HttpService] },
+		{ provide: Models.OAuthShortcode, useFactory: OAuthShortcodeFactory, deps: [HttpService] },
+		{ provide: Models.Tip, useFactory: TipFactory, deps: [HttpService] },
+		{ provide: Models.Authorization, useFactory: AuthorizationFactory, deps: [HttpService] },
+		{ provide: Models.Platform, useFactory: PlatformFactory, deps: [HttpService] },
+		{ provide: Models.Session, useFactory: SessionFactory, deps: [HttpService] },
+		{ provide: Models.Tipper, useFactory: TipperFactory, deps: [HttpService] },
+		{ provide: Models.Integration, useFactory: IntegrationFactory, deps: [HttpService] },
+		{ provide: Models.Font, useFactory: FontFactory, deps: [HttpService] },
+		{ provide: Models.Viewer, useFactory: ViewerFactory, deps: [HttpService] },
+		{ provide: Models.Giveaway, useFactory: GiveawayFactory, deps: [HttpService] },
+		{ provide: Models.ViewerAccount, useFactory: ViewerAccountFactory, deps: [HttpService] },
+		{ provide: Models.Internal, useFactory: InternalFactory, deps: [HttpService] },
+		{ provide: Models.IgnoredPoints, useFactory: IgnoredPointsFactory, deps: [HttpService] },
+		{ provide: Models.Feedback, useFactory: FeedbackFactory, deps: [HttpService] },
+		{ provide: Models.HelpArticle, useFactory: HelpArticleFactory, deps: [HttpService] },
+		{ provide: Models.HelpCategory, useFactory: HelpCategoryFactory, deps: [HttpService] },
+		{ provide: Models.OverlayScene, useFactory: OverlaySceneFactory, deps: [HttpService] },
+	],
 })
 export class FrontendCommonModule {
 
