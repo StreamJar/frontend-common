@@ -4,7 +4,7 @@ import { HttpService } from '../services/http.service';
 import { pick } from '../utils';
 import { Dated } from './base';
 
-export interface IAccount  extends Dated {
+export interface IAccount extends Dated {
 	username: string;
 	email: string;
 	role: string;
@@ -31,10 +31,22 @@ export interface IAccountInvite extends Dated {
 	scopes: string[];
 }
 
+export interface IAccountUsername {
+	username: string;
+	taken: boolean;
+	active: boolean;
+}
+
+export interface IAccountUsernameState {
+	canChange: boolean;
+	expiresAfterDays: number;
+	usernames: IAccountUsername[];
+}
+
 export class Account {
 	public writable: string[] = ['optInMarketing'];
 
-	constructor(private jar: HttpService) {}
+	constructor(private jar: HttpService) { }
 
 	public get(): Promise<IAccount> {
 		return this.jar.get<IAccount>(`account`).toPromise();
@@ -55,7 +67,7 @@ export class Account {
 	public signup(
 		token: string, name: string, opts: { tipsEnabled?: boolean, botEnabled?: boolean; noChannel?: boolean, optInMarketing?: boolean } = {},
 	): Promise<ILoginToken> {
-		return this.jar.post<ILoginToken>(`account/signup`, { signup: token, username: name, ...opts}).toPromise()
+		return this.jar.post<ILoginToken>(`account/signup`, { signup: token, username: name, ...opts }).toPromise()
 	}
 
 	public getInvites(): Observable<IAccountInvite[]> {
@@ -63,7 +75,7 @@ export class Account {
 	}
 
 	public acceptInvite(invite: IAccountInvite): Observable<void> {
-		return this.jar.patch< void>(`account/invites/${invite.id}`, {});
+		return this.jar.patch<void>(`account/invites/${invite.id}`, {});
 	}
 
 	public deleteInvite(invite: IAccountInvite): Observable<void> {
@@ -72,5 +84,13 @@ export class Account {
 
 	public update(account: IAccount): Observable<IAccount> {
 		return this.jar.patch<IAccount>(`account`, pick(account, this.writable));
+	}
+
+	public getUsernames(): Observable<IAccountUsernameState> {
+		return this.jar.get<IAccountUsernameState>(`account/username`);
+	}
+
+	public updateUsername(username: IAccountUsername): Observable<void> {
+		return this.jar.post<void>(`account/username`, { username: username.username });
 	}
 }

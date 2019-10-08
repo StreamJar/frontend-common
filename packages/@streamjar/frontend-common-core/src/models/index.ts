@@ -39,7 +39,7 @@ import { Viewer } from './viewer.model';
 import { Warning } from './warning.model';
 import { Website } from './website.model';
 
-export { IAccount, Account, IAccountInvite } from './account.model';
+export { IAccount, Account, IAccountInvite, IAccountUsername, IAccountUsernameState } from './account.model';
 export { IChannel, Channel, IEvent, IStatus, IStatuses, ITicket } from './channel.model';
 export { ITip, Tip, IExternalTip, IPaymentGatewayConfig } from './tip.model';
 export { ISummary, Statistics } from './statistics.model';
