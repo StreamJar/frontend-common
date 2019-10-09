@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import * as Models from '@streamjar/frontend-common-core/models';
 import { HttpService } from '@streamjar/frontend-common-core';
+import * as Models from '@streamjar/frontend-common-core/models';
 
+// tslint:disable only-arrow-functions
 export function AccountFactory(dep: HttpService) { return new Models.Account(dep); }
 export function ApiDocsFactory(dep: HttpService) { return new Models.ApiDocs(dep); }
 export function ChannelFactory(dep: HttpService) { return new Models.Channel(dep); }
@@ -42,6 +43,7 @@ export function FeedbackFactory(dep: HttpService) { return new Models.Feedback(d
 export function HelpArticleFactory(dep: HttpService) { return new Models.HelpArticle(dep); }
 export function HelpCategoryFactory(dep: HttpService) { return new Models.HelpCategory(dep); }
 export function OverlaySceneFactory(dep: HttpService) { return new Models.OverlayScene(dep); }
+// tslint:enable only-arrow-functions
 export function IncinerateFactory(dep: HttpService) { return new Models.Incinerate(dep); }
 
 @NgModule({

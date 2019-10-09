@@ -4,11 +4,14 @@ import { Authorization } from './authorization.model';
 import { Boost } from './boost.model';
 import { Channel } from './channel.model';
 import { Command } from './command.model';
+import { Feedback } from './feedback.model';
 import { Filter } from './filter.model';
 import { Follower } from './follower.model';
 import { Font } from './font.model';
 import { Giveaway } from './giveaway.model';
 import { Goal } from './goal.model';
+import { HelpArticle } from './help-article.model';
+import { HelpCategory } from './help-category.model';
 import { IgnoredPoints } from './ignored-points.model';
 import { Integration } from './integration.model';
 import { Internal } from './internal.model';
@@ -16,6 +19,7 @@ import { Invite } from './invite.model';
 import { Message } from './message.model';
 import { OAuthApplication } from './oauth-application.model';
 import { OAuthShortcode } from './oauth-shortcode.model';
+import { OverlayScene } from './overlay-scene.model';
 import { Panel } from './panel.model';
 import { Permission } from './permission.model';
 import { Platform } from './platform.model';
@@ -34,13 +38,9 @@ import { ViewerAccount } from './viewer-account.model';
 import { Viewer } from './viewer.model';
 import { Warning } from './warning.model';
 import { Website } from './website.model';
-import { Feedback } from './feedback.model';
-import { HelpArticle } from './help-article.model';
-import { HelpCategory } from './help-category.model';
-import { OverlayScene } from './overlay-scene.model';
 import { Incinerate } from './incinerate.model';
 
-export { IAccount, Account, IAccountInvite } from './account.model';
+export { IAccount, Account, IAccountInvite, IAccountUsername, IAccountUsernameState } from './account.model';
 export { IChannel, Channel, IEvent, IStatus, IStatuses, ITicket } from './channel.model';
 export { ITip, Tip, IExternalTip, IPaymentGatewayConfig } from './tip.model';
 export { ISummary, Statistics } from './statistics.model';
@@ -77,8 +77,10 @@ export { Giveaway, IGiveawayWin } from './giveaway.model';
 export {
 	IPanel, PanelSetting, PanelType, IPanelTips, IPanelAudioRecording, IPanelInput, IPanelText, Panel,
 } from './panel.model';
-export { ApiDocs, IDocumentationCategory, IDocumentationEndpoint, IDocumentationGroup, IDocumentationParam,
-	IDocumentationResponse } from './api-docs.model';
+export {
+	ApiDocs, IDocumentationCategory, IDocumentationEndpoint, IDocumentationGroup, IDocumentationParam,
+	IDocumentationResponse,
+} from './api-docs.model';
 export { OAuthShortcode, IShortcode, IShortcodeState, IShortcodeInfo } from './oauth-shortcode.model';
 export { Internal, IBotStatus, IBotStatusService, IBotStatusBot, IInternalChannel, IInternalService } from './internal.model';
 export { IgnoredPoints, IIgnoredPointsUser } from './ignored-points.model';
