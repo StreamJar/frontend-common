@@ -13,6 +13,7 @@ import { Goal } from './goal.model';
 import { HelpArticle } from './help-article.model';
 import { HelpCategory } from './help-category.model';
 import { IgnoredPoints } from './ignored-points.model';
+import { Incinerate } from './incinerate.model';
 import { Integration } from './integration.model';
 import { Internal } from './internal.model';
 import { Invite } from './invite.model';
@@ -38,7 +39,6 @@ import { ViewerAccount } from './viewer-account.model';
 import { Viewer } from './viewer.model';
 import { Warning } from './warning.model';
 import { Website } from './website.model';
-import { Incinerate } from './incinerate.model';
 
 export { IAccount, Account, IAccountInvite, IAccountUsername, IAccountUsernameState } from './account.model';
 export { IChannel, Channel, IEvent, IStatus, IStatuses, ITicket } from './channel.model';
@@ -82,7 +82,10 @@ export {
 	IDocumentationResponse,
 } from './api-docs.model';
 export { OAuthShortcode, IShortcode, IShortcodeState, IShortcodeInfo } from './oauth-shortcode.model';
-export { Internal, IBotStatus, IBotStatusService, IBotStatusBot, IInternalChannel, IInternalService } from './internal.model';
+export {
+	Internal, IBotStatus, IBotStatusService, IBotStatusBot,
+	IInternalChannel, IInternalService, IAdminService,
+} from './internal.model';
 export { IgnoredPoints, IIgnoredPointsUser } from './ignored-points.model';
 export { Feedback, IFeedbackComment, IFeedbackItem, IFeedbackStatus, IFeedbackTag, IFeedbackUser } from './feedback.model';
 export { HelpArticle, IHelpArticle, IHelpArticleSummary, IHelpArticleSearch } from './help-article.model';

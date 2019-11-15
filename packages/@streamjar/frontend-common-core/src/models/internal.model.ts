@@ -47,6 +47,7 @@ export interface IAdminService extends IService {
 	pool: string | null;
 	deletedAt: string | null;
 	channelId: number;
+	server: string[] | null;
 }
 
 export class Internal {
