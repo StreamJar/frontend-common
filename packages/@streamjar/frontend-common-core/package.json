@@ -10,7 +10,7 @@
   "typings": "dist/src/index.d.ts",
   "author": "Luke Thompson <luke@streamjar.tv>",
   "dependencies": {
-    "@types/js-cookie": "^2.2.2",
+    "@types/js-cookie": "^2.2.4",
     "js-cookie": "^2.2.0",
     "rxjs": "^6.5.2"
   },
@@ -22,6 +22,6 @@
     "lint": "tslint --project ."
   },
   "devDependencies": {
-    "typescript": "^3.5.3"
+    "typescript": "^3.7.2"
   }
 }

@@ -2,7 +2,6 @@ import { Observable } from 'rxjs';
 
 import { IChannel } from '../models';
 import { HttpService } from '../services/http.service';
-import { IExtralife } from './settings.model';
 
 export interface IExtralife {
 	participantID: string;
@@ -45,7 +44,7 @@ export interface ILinks {
 }
 
 export class Settings {
-	constructor(protected jar: HttpService) {}
+	constructor(protected jar: HttpService) { }
 
 	public getExtralife(channel: IChannel): Observable<IExtralife> {
 		return this.jar.get<IExtralife>(`channels/${channel.id}/settings/extralife`);
