@@ -84,7 +84,7 @@ export {
 export { OAuthShortcode, IShortcode, IShortcodeState, IShortcodeInfo } from './oauth-shortcode.model';
 export {
 	Internal, IBotStatus, IBotStatusService, IBotStatusBot,
-	IInternalChannel, IInternalService, IAdminService,
+	IInternalChannel, IInternalService, IAdminService, IAdminFeatures,
 } from './internal.model';
 export { IgnoredPoints, IIgnoredPointsUser } from './ignored-points.model';
 export { Feedback, IFeedbackComment, IFeedbackItem, IFeedbackStatus, IFeedbackTag, IFeedbackUser } from './feedback.model';
@@ -93,7 +93,7 @@ export { HelpCategory, IHelpCategory } from './help-category.model';
 export { IOverlayScene, OverlayScene } from './overlay-scene.model';
 export { IIncineratorExport, IIncineratorRequestResponse, IIncineratorState, Incinerate } from './incinerate.model';
 
-export { BaseModel } from './base';
+export { BaseModel, IFeatureFlags } from './base';
 
 export const MODULES = [
 	Account,

@@ -1,7 +1,8 @@
 import { Observable } from 'rxjs';
 
 import { HttpService } from '../services/http.service';
-import { Dated, Identifiable } from './base';
+import { BaseModel, Dated, Identifiable, IFeatureFlags } from './base';
+import { IBaseChannel } from './channel.model';
 import { IService } from './service.model';
 
 export interface IBotStatus {
@@ -50,6 +51,11 @@ export interface IAdminService extends IService {
 	server: string[] | null;
 }
 
+export interface IAdminFeatures {
+	defaults: IFeatureFlags;
+	configured: IFeatureFlags;
+}
+
 export class Internal {
 	constructor(private jar: HttpService) { }
 
@@ -69,6 +75,10 @@ export class Internal {
 		return this.jar.get<IInternalService[]>(`internal/search/services?query=${query}`);
 	}
 
+	public findChannels(query: { token?: string; flag?: string }): Observable<IBaseChannel[]> {
+		return this.jar.get<IBaseChannel[]>(`internal/admin/channel${BaseModel.query(query)}`);
+	}
+
 	public getServices(channelId: number): Observable<IAdminService[]> {
 		return this.jar.get<IAdminService[]>(`internal/admin/channel/${channelId}/services`);
 	}
@@ -79,5 +89,13 @@ export class Internal {
 
 	public reconnectService(service: IAdminService): Observable<void> {
 		return this.jar.post<void>(`internal/admin/channel/${service.channelId}/services/${service.id}/reconnect`, {});
+	}
+
+	public getFeatures(channelId: number): Observable<IAdminFeatures> {
+		return this.jar.get<IAdminFeatures>(`internal/admin/channel/${channelId}/features`);
+	}
+
+	public updateFeatures(service: IAdminService, flags: IFeatureFlags): Observable<IAdminFeatures> {
+		return this.jar.put<IAdminFeatures>(`internal/admin/channel/${service.channelId}/features`, { flags });
 	}
 }

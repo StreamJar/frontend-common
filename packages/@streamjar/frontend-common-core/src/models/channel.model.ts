@@ -2,9 +2,9 @@ import { Observable } from 'rxjs';
 
 import { HttpService } from '../services/http.service';
 import { pick } from '../utils';
-import { Dated } from './base';
+import { Dated, IFeatureFlags } from './base';
 
-export interface IChannel extends Dated {
+export interface IBaseChannel extends Dated {
 	id: number,
 	username: string,
 	currency: string,
@@ -12,7 +12,9 @@ export interface IChannel extends Dated {
 	botEnabled: boolean,
 	tipsEnabled: boolean,
 	tipsConfigured: boolean,
+}
 
+export interface IChannel extends IBaseChannel {
 	services: string[],
 	integrations: string[],
 
@@ -52,7 +54,7 @@ export interface ITicket {
 }
 
 export class Channel {
-	constructor(private jar: HttpService) {}
+	constructor(private jar: HttpService) { }
 
 	public get(name: string): Promise<IChannel> {
 		return this.jar.get<IChannel>(`channels/${name}`).toPromise()
@@ -79,6 +81,10 @@ export class Channel {
 	}
 
 	public openTicket(channel: IChannel, ticket: ITicket): Observable<void> {
-		return this.jar.post<void>(`support/ticket`, { ...ticket, channelId: channel.id});
+		return this.jar.post<void>(`support/ticket`, { ...ticket, channelId: channel.id });
+	}
+
+	public getFeatures(channel: IChannel): Observable<IFeatureFlags> {
+		return this.jar.get<IFeatureFlags>(`channels/${channel.id}/features`)
 	}
 }

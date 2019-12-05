@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 
 import { HttpService } from '../services/http.service';
 import { pick } from '../utils';
-import { Dated } from './base';
+import { Dated, IFeatureFlags } from './base';
 
 export interface IAccount extends Dated {
 	username: string;
@@ -11,6 +11,7 @@ export interface IAccount extends Dated {
 	avatar?: string;
 	primaryChannel: string;
 	optInMarketing: boolean;
+	features: IFeatureFlags;
 }
 
 export interface ILoginToken {

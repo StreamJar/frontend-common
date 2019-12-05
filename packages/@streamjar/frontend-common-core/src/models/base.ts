@@ -28,6 +28,10 @@ export interface BeforeUpdate<T> {
 	beforeUpdate(data: T): T;
 }
 
+export interface IFeatureFlags {
+	[key: string]: boolean;
+}
+
 export abstract class BaseModel<T> {
 	public endpoint: string;
 	public writable: string[] = [];
@@ -40,7 +44,7 @@ export abstract class BaseModel<T> {
 		return `?${Object.keys(data).map(key => `${key}=${data[key]}`).join('&')}`;
 	}
 
-	constructor(protected jar: HttpService) {}
+	constructor(protected jar: HttpService) { }
 
 	public beforeHook?(T: any): T
 	public beforeUpdate?(T: any): T
@@ -62,10 +66,10 @@ export abstract class BaseModel<T> {
 		return this.jar.get(`channels/${channel.id}/${this.endpoint}${BaseModel.query(query)}`)
 			.pipe(map((val: T[]) => {
 				if (this.manipulateHook) {
-					return <T[]> val.map(value => this.manipulateHook && this.manipulateHook(value));
+					return <T[]>val.map(value => this.manipulateHook && this.manipulateHook(value));
 				}
 
-				return <T[]> val;
+				return <T[]>val;
 			}));
 	}
 
@@ -73,10 +77,10 @@ export abstract class BaseModel<T> {
 		return this.jar.get(`channels/${channel.id}/${this.endpoint}/${id}`)
 			.pipe(map(val => {
 				if (this.manipulateHook) {
-					return <T> this.manipulateHook(val);
+					return <T>this.manipulateHook(val);
 				}
 
-				return <T> val;
+				return <T>val;
 			}));
 	}
 
@@ -88,10 +92,10 @@ export abstract class BaseModel<T> {
 		return this.jar.post(`channels/${channel.id}/${this.endpoint}`, this.fetchData(obj))
 			.pipe(map(val => {
 				if (this.manipulateHook) {
-					return <T> this.manipulateHook(val);
+					return <T>this.manipulateHook(val);
 				}
 
-				return <T> val;
+				return <T>val;
 			}));
 	}
 
@@ -107,10 +111,10 @@ export abstract class BaseModel<T> {
 		return this.jar.patch(`channels/${channel.id}/${this.endpoint}/${this.getId(obj)}`, this.fetchData(obj))
 			.pipe(map(val => {
 				if (this.manipulateHook) {
-					return <T> this.manipulateHook(val);
+					return <T>this.manipulateHook(val);
 				}
 
-				return <T> val;
+				return <T>val;
 			}));
 	}
 
