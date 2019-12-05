@@ -12,6 +12,7 @@ export interface IBaseChannel extends Dated {
 	botEnabled: boolean,
 	tipsEnabled: boolean,
 	tipsConfigured: boolean,
+	features: IFeatureFlags;
 }
 
 export interface IChannel extends IBaseChannel {
@@ -82,9 +83,5 @@ export class Channel {
 
 	public openTicket(channel: IChannel, ticket: ITicket): Observable<void> {
 		return this.jar.post<void>(`support/ticket`, { ...ticket, channelId: channel.id });
-	}
-
-	public getFeatures(channel: IChannel): Observable<IFeatureFlags> {
-		return this.jar.get<IFeatureFlags>(`channels/${channel.id}/features`)
 	}
 }

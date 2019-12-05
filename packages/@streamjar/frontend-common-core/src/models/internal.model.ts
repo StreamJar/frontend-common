@@ -28,6 +28,7 @@ export interface IInternalChannel extends Identifiable, Dated {
 	avatar: string;
 	tipsEnabled: string;
 	botEnabled: string;
+	flags: IFeatureFlags;
 }
 
 export interface IInternalService extends Identifiable, Dated {
@@ -75,8 +76,8 @@ export class Internal {
 		return this.jar.get<IInternalService[]>(`internal/search/services?query=${query}`);
 	}
 
-	public findChannels(query: { token?: string; flag?: string }): Observable<IBaseChannel[]> {
-		return this.jar.get<IBaseChannel[]>(`internal/admin/channel${BaseModel.query(query)}`);
+	public findChannels(query: { token?: string; flag?: string }): Observable<IInternalChannel[]> {
+		return this.jar.get<IInternalChannel[]>(`internal/admin/channel${BaseModel.query(query)}`);
 	}
 
 	public getServices(channelId: number): Observable<IAdminService[]> {
@@ -95,7 +96,7 @@ export class Internal {
 		return this.jar.get<IAdminFeatures>(`internal/admin/channel/${channelId}/features`);
 	}
 
-	public updateFeatures(service: IAdminService, flags: IFeatureFlags): Observable<IAdminFeatures> {
-		return this.jar.put<IAdminFeatures>(`internal/admin/channel/${service.channelId}/features`, { flags });
+	public updateFeatures(channel: IBaseChannel, flags: IFeatureFlags): Observable<IAdminFeatures> {
+		return this.jar.put<IAdminFeatures>(`internal/admin/channel/${channel.id}/features`, { flags });
 	}
 }
