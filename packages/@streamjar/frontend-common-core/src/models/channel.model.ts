@@ -54,6 +54,21 @@ export interface ITicket {
 	location: string;
 }
 
+export interface ISongActive {
+	status: true;
+	id?: string;
+	source: string;
+	artwork: string;
+	name: string;
+	artist: string;
+}
+
+export interface ISongInactive {
+	status: false;
+}
+
+export type ISong = ISongActive | ISongInactive;
+
 export class Channel {
 	constructor(private jar: HttpService) { }
 
@@ -83,5 +98,9 @@ export class Channel {
 
 	public openTicket(channel: IChannel, ticket: ITicket): Observable<void> {
 		return this.jar.post<void>(`support/ticket`, { ...ticket, channelId: channel.id });
+	}
+
+	public getSong(channel: IChannel): Observable<ISong> {
+		return this.jar.get<ISong>(`channels/${channel.id}/song`);
 	}
 }

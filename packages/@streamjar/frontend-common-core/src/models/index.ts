@@ -41,7 +41,7 @@ import { Warning } from './warning.model';
 import { Website } from './website.model';
 
 export { IAccount, Account, IAccountInvite, IAccountUsername, IAccountUsernameState } from './account.model';
-export { IChannel, Channel, IEvent, IStatus, IStatuses, ITicket, IBaseChannel } from './channel.model';
+export { IChannel, Channel, IEvent, IStatus, IStatuses, ITicket, IBaseChannel, ISong, ISongActive, ISongInactive } from './channel.model';
 export { ITip, Tip, IExternalTip, IPaymentGatewayConfig } from './tip.model';
 export { ISummary, Statistics } from './statistics.model';
 export { IFollower, Follower } from './follower.model';
@@ -70,7 +70,7 @@ export {
 	ISpotifySong, Integration, IIntegration, IOAuthConfig, ITiltifyCampaign, ITwitter, ITwitterConfiguration,
 	IDonorDriveConfiguration, IDonorDrive, IDonorDriveCharity, IDonorDriveParticipant,
 } from './integration.model';
-export { IGoogleFont, Font } from './font.model';
+export { IFont, Font } from './font.model';
 export { Viewer, IViewer, IViewerWarning } from './viewer.model';
 export { ViewerAccount, IViewerAccount } from './viewer-account.model';
 export { Giveaway, IGiveawayWin } from './giveaway.model';

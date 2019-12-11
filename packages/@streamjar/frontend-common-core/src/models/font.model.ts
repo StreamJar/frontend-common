@@ -1,14 +1,16 @@
 import { HttpService } from '../services/http.service';
 import { BaseModel } from './base';
 
-export interface IGoogleFont {
+export interface IFont {
+	id?: number;
 	family: string;
-	source: string;
+	source: 'google' | 'custom';
+	location: string | null;
 }
 
-export class Font extends BaseModel<IGoogleFont> {
+export class Font extends BaseModel<IFont> {
 	public static writable: string[] = [];
-	public endpoint = 'overlay2/fonts';
+	public endpoint = 'fonts';
 
 	constructor(protected jar: HttpService) {
 		super(jar);
