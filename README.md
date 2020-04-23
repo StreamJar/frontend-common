@@ -1,4 +1,6 @@
 # @streamjar/frontend-common
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FStreamJar%2Ffrontend-common.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FStreamJar%2Ffrontend-common?ref=badge_shield)
+
 frontend-common is a shared library shared between our frontends ([frontend2](https://control.streamjar.tv), [usersite2](https://luke.streamjar.gg), [developers](https://developers.streamjar.io)) which aids in execution of HTTP requests and any other shared logic.
 
 For simplicity, this is a new repository. You can find the archived frontend-common (and frontend1 version) [here](https://github.com/StreamJar/blipjar-frontend-common)
@@ -72,3 +74,6 @@ export class JarService extends HttpService {
 
 ## About
 This is configured as a mono-repo, using [lerna](https://lernajs.io/). Publishing should not be done manually.
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FStreamJar%2Ffrontend-common.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FStreamJar%2Ffrontend-common?ref=badge_large)
